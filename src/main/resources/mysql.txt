@@ -1,0 +1,26 @@
+CREATE DATABASE PRM;
+USE PRM;
+CREATE TABLE user(
+  id int unsigned not null auto_increment primary key,
+  userName varchar(20) not null UNIQUE,
+  password varchar(20) not null check (len(password)>=6)
+  
+);
+CREATE TABLE risk(
+  id int unsigned not null auto_increment primary key,
+  riskName varchar(20) not null,
+  riskContent varchar(100),
+  riskPossibility int not null,
+  riskEfficiency int not null,
+  riskTrigger varchar(100), 
+  creatorId int not null,
+  riskFollower int
+
+);
+CREATE TABLE riskFollow(
+  id int unsigned not null auto_increment primary key,
+  riskId int not null,
+  followerId int not null,
+  description varchar(100)
+
+);
