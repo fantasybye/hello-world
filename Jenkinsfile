@@ -3,6 +3,7 @@ node {
         git 'https://github.com/fantasybye/hello-world.git'
     }
     stage('QA') {
+    	sh 'sudo chmod -R 777 home/john/.jenkins'
         sh 'sonar-scanner'
     }
     stage('build') {
