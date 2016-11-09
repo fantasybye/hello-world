@@ -3,7 +3,8 @@ USE PRM;
 CREATE TABLE user(
   id int unsigned not null auto_increment primary key,
   userName varchar(20) not null UNIQUE,
-  password varchar(20) not null check (len(password)>=6)
+  password varchar(20) not null check (len(password)>=6),
+  administrator boolean not null
   
 );
 CREATE TABLE risk(
