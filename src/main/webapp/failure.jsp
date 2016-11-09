@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>Sorry!</title>
+<link rel="stylesheet" type="text/css" href="CSS/structure.css">
 </head>
 <body>
-
+	<h2>Sorry!Something is wrong with your username or password.</h2>
 </body>
 </html>

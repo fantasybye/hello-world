@@ -1,6 +1,80 @@
 body{
   background:#eff3f6;
 }
+
+.edit input[type=text]{
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+    -moz-box-shadow:1px 1px 1px rgba(0, 0, 0, 0.06) inset, 0 0 1px #95a2a7 inset;
+    margin:3px 0 4px;
+    padding:2px 3px;
+    width:430px;
+    height:20px;
+    display:block;
+}
+
+
+.edit input[type=text]:focus{
+    -moz-box-shadow:2px 3px 3px rgba(0, 0, 0, 0.04) inset, 0 0 1px #0d6db6 inset;
+    -webkit-box-shadow:2px 3px 3px rgba(0, 0, 0, 0.04) inset, 0 0 1px #0d6db6 inset;
+    box-shadow:2px 3px 3px rgba(0, 0, 0, 0.04) inset, 0 0 1px #0d6db6 inset;
+	color:#333;
+}
+
+.edit form{
+	text-align:center;
+}
+
+.edit td{
+	background:#ffffff;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.edit footer{
+	background:#eff4f6;
+    border-top:1px solid #fff;
+    padding:12px 26px;
+    overflow:hidden;
+    width:620px;
+	height:50px;
+	text-align:right;
+	margin:auto;
+}
+
+.edit table{
+	width:600px;
+	height:220px;
+	border: 1px solid #C3D4DB;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px; 
+	cellspacing:1px;
+	font-family:Microsoft YaHei;
+}
+
+#submit_button{
+	-moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:15px;
+    background:#a1d8f0;
+    background:-moz-linear-gradient(top, #badff3, #7acbed);
+    background:-webkit-gradient(linear, left top, left bottom, from(#badff3), to(#7acbed));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#badff3', EndColorStr='#7acbed')";
+    border:1px solid #7db0cc !important;
+    cursor: pointer;
+    font:bold 14px/14px Verdana, Tahomma, Geneva;
+    text-shadow:rgba(0,0,0,0.2) 0 1px 0px; 
+    color:#fff;
+    -moz-box-shadow:inset rgba(255,255,255,0.6) 0 1px 1px, rgba(0,0,0,0.1) 0 1px 1px;
+    -webkit-box-shadow:inset rgba(255,255,255,0.6) 0 1px 1px, rgba(0,0,0,0.1) 0 1px 1px;
+    box-shadow:inset rgba(255,255,255,0.6) 0 1px 1px, rgba(0,0,0,0.1) 0 1px 1px;    
+    margin:10px 20px 10px;
+	padding:7px 21px;
+}
 .box
 {
     background:#fefefe;
@@ -21,6 +95,16 @@ body{
 {
 	height:260px;
     width:332px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin:-130px 0 0 -166px;
+}
+
+.box.signup
+{
+	height:320px;
+	width:332px;
 	position:absolute;
 	left:50%;
 	top:50%;
@@ -52,6 +136,25 @@ h1{
     width:100%;  
     text-align: center;   
 }
+
+h2{
+	position:absolute;
+	top:25%;
+	color: #000;  
+	font:25px/22px Courier New, Helvetica, Sans-serif;
+    text-shadow:0 0 1px;   
+    letter-spacing: 1px; 
+    width:100%;  
+    text-align: center; 
+}
+
+h3{
+	font:25px/22px Courier New, Helvetica, Sans-serif;
+    text-shadow:0 0 1px;   
+    letter-spacing: 1px; 
+    width:100%;  
+    text-align: center;
+}
 .box p{
 	margin:5px 0 0;
 	text-align:center
@@ -70,11 +173,7 @@ h1{
 .box footer a{
 	cursor:pointer;
 }
-.box footer input[type=checkbox]{
-	vertical-align:sub;
-	*vertical-align:middle;
-	margin-right:10px;
-}
+
 .box input[type=text],
 .box input[type=password],
 .txtField,
