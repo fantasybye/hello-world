@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import model.risk;
 import model.riskFollow;
 
-public interface haddleInterface {
+public interface handleInterface {
 	public ArrayList<risk> getAllRisk();//获得所有risk
 	public ArrayList<risk> getSingleRisk(String s);//获得关键字risk
 	public boolean modifyRisk(risk r);//修改risk
