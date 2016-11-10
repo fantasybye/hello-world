@@ -2,6 +2,9 @@ package data;
 
 import java.util.ArrayList;
 
+import model.risk;
+import model.riskFollow;
+
 public interface haddleInterface {
 	public ArrayList<risk> getAllRisk();//获得所有risk
 	public ArrayList<risk> getSingleRisk(String s);//获得关键字risk
@@ -15,6 +18,6 @@ public interface haddleInterface {
 	public boolean addRiskFollow(riskFollow r);//添加riskFollow
 	public boolean deleteRiskFollow(int riskFollowId);//删除riskFollow
 	
-	public int judgeLogin(String userName,String pwd,boolean is);//登录验证，0成功，1用户名错，2密码错,-1失败
+	public int judgeLogin(String userName,String pwd);//登录验证，0成功，1用户名错，2密码错,-1失败
 	public int addUser(String name,String psw,boolean is);//添加用户，0成功，1用户名已存在，2密码过短，-1失败
 }

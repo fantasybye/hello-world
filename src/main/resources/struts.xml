@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+    
+        <action name="login" class="servlet.LoginAction" method="toLogin">
+            <result>/login.jsp</result>
+        </action>
+        
+        <action name="signin" class="servlet.LoginAction" method="judgeLogin">
+        	<result name="success">/risk.jsp</result>
+        	<result name="fail"></result>
+        	<result name="not found"></result>
+        	<result name="wrong"></result>
+        </action>
+        
+        <action name="regist" class="servlet.UserAddAction" method="addUser">
+        	<result name="success">/risk.jsp</result>
+        	<result name="fail"></result>
+        	<result name="already exist"></result>
+        	<result name="too short"></result>
+        </action>
+        
+        <action name="addrisk" class="servlet.RiskAction" method="addRisk">
+        	<result name="success"></result>
+        </action>
+        
+    </package>
+
+    <!-- Add packages here -->
+
+</struts>

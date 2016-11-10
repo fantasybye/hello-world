@@ -1,4 +1,4 @@
-package data;
+package model;
 
 public class risk {
 	private int id;
@@ -7,8 +7,8 @@ public class risk {
 	private int riskPossibility;
 	private int riskEfficiency;
 	private String riskTrigger;
-	private int creatorId;
-	private int riskFollower;
+	private String creatorName;
+	private String riskFollower;
 	public int getId() {
 		return id;
 	}
@@ -45,16 +45,16 @@ public class risk {
 	public void setRiskTrigger(String riskTrigger) {
 		this.riskTrigger = riskTrigger;
 	}
-	public int getCreatorId() {
-		return creatorId;
+	public String getCreatorName() {
+		return creatorName;
 	}
-	public void setCreatorId(int creatorId) {
-		this.creatorId = creatorId;
+	public void setCreatorName(String creatorName) {
+		this.creatorName = creatorName;
 	}
-	public int getRiskFollower() {
+	public String getRiskFollower() {
 		return riskFollower;
 	}
-	public void setRiskFollower(int riskFollower) {
+	public void setRiskFollower(String riskFollower) {
 		this.riskFollower = riskFollower;
 	}
 

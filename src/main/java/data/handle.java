@@ -4,6 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.risk;
+import model.riskFollow;
+
 public class handle implements haddleInterface{
 	
 	static String sql = null;  
@@ -207,8 +210,8 @@ public class handle implements haddleInterface{
 		return true;
 	}//É¾³ýµ¥¸öriskFollow
 //--------------------------------------------------------------------------------------------------//	
-	public int judgeLogin(String userName,String pwd,boolean is){
-		sql="select * from user when userName= "+userName+" and administrator="+is;
+	public int judgeLogin(String userName,String pwd){
+		sql="select * from user when userName= "+userName;
 		db=new ConnectMySQL(sql);
 		
 		int result=2;
