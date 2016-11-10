@@ -9,29 +9,29 @@ import model.User;
 import model.risk;
 
 
+
 public class LoginAction extends ActionSupport{
 
 	//private String message;
 	private User loginuser;
-	private String userName;
-	private String passwd;
+	private String username;
+	private String password;
 	private ArrayList<risk> risklist; 
-	
-	public String getUserName() {
-		return userName;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getPasswd() {
-		return passwd;
+	public String getPassword() {
+		return password;
 	}
 
-
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public User getLoginuser() {
@@ -59,10 +59,10 @@ public class LoginAction extends ActionSupport{
 	
 	public String judgeLogin(){
 		handle h=new handle();
-		int result=h.judgeLogin(userName,passwd);
+		int result=h.judgeLogin(username,password);
 		switch(result){
 			case 0:	
-				loginuser=new User(userName);
+				loginuser=new User(username);
 				risklist=h.getAllRisk();
 				return "success";
 			case -1:

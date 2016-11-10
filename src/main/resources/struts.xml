@@ -9,23 +9,19 @@
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
-    
-        <action name="login" class="servlet.LoginAction" method="toLogin">
-            <result>/login.jsp</result>
+        
+        <action name="login" class="servlet.LoginAction" method="judgeLogin">
+        	<result name="success">/risk.jsp</result>
+        	<result name="fail">/failure.jsp</result>
+        	<result name="not found">/failure.jsp</result>
+        	<result name="wrong">/failure.jsp</result>
         </action>
         
-        <action name="signin" class="servlet.LoginAction" method="judgeLogin">
+        <action name="register" class="servlet.UserAddAction" method="addUser">
         	<result name="success">/risk.jsp</result>
-        	<result name="fail"></result>
-        	<result name="not found"></result>
-        	<result name="wrong"></result>
-        </action>
-        
-        <action name="regist" class="servlet.UserAddAction" method="addUser">
-        	<result name="success">/risk.jsp</result>
-        	<result name="fail"></result>
-        	<result name="already exist"></result>
-        	<result name="too short"></result>
+        	<result name="fail">/failure.jsp</result>
+        	<result name="already exist">/failure.jsp</result>
+        	<result name="too short">/failure.jsp</result>
         </action>
         
         <action name="addrisk" class="servlet.RiskAction" method="addRisk">

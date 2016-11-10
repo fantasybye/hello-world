@@ -217,7 +217,7 @@ public class handle implements haddleInterface{
 	}//É¾³ýµ¥¸öriskFollow
 //--------------------------------------------------------------------------------------------------//	
 	public int judgeLogin(String userName,String pwd){
-		sql="select * from user when userName= "+userName;
+		sql="select * from user where userName="+userName;
 		db=new ConnectMySQL(sql);
 		
 		int result=2;

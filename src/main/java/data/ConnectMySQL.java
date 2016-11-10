@@ -5,7 +5,7 @@ import java.sql.*;
 public class ConnectMySQL {
 	public static final String url = "jdbc:mysql://127.0.0.1/prm";  
     public static final String name = "com.mysql.jdbc.Driver";  
-    public static final String user = "";  
+    public static final String user = "root";  
     public static final String password = "";  
   
     public Connection conn = null;  

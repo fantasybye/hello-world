@@ -20,7 +20,7 @@
 	</fieldset>
 	<footer>
 	  <input type="submit" class="btnLogin" value="Login" tabindex="4">
-	  <p><label>New to PRM? </label><a>Create a new accout</a></p>
+	  <p><label>New to PRM? </label><a href ="/PRM/register.jsp">Create a new accout</a></p>
 	</footer>
 </form>
 

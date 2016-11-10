@@ -8,26 +8,36 @@ import model.User;
 import model.risk;
 
 public class UserAddAction extends ActionSupport{
-	private String userName;
-	private String passwd;
+	private String rusername;
+	private String rpassword;
+	private String crpassword;
 	private boolean isadmin;
 	private User loginuser;
 	private ArrayList<risk> risklist; 
 	
-	public String getUserName() {
-		return userName;
+	
+	public String getRusername() {
+		return rusername;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setRusername(String rusername) {
+		this.rusername = rusername;
 	}
 
-	public String getPasswd() {
-		return passwd;
+	public String getRpassword() {
+		return rpassword;
 	}
 
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setRpassword(String rpassword) {
+		this.rpassword = rpassword;
+	}
+
+	public String getCrpassword() {
+		return crpassword;
+	}
+
+	public void setCrpassword(String crpassword) {
+		this.crpassword = crpassword;
 	}
 
 	public boolean isIsadmin() {
@@ -56,11 +66,14 @@ public class UserAddAction extends ActionSupport{
 
 	public String addUser(){
 		handle h=new handle();
-		int result=h.addUser(userName, passwd, isadmin);
+		if(!rpassword.equals(crpassword)){
+			return "fail";
+		}
+		int result=h.addUser(rusername, rpassword, true);
 		
 		switch(result){
 			case 0:
-				loginuser=new User(userName);
+				loginuser=new User(rusername);
 				risklist=h.getAllRisk();
 				return "success";
 			case 1:
