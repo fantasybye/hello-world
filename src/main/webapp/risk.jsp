@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8" import="classes.Risk,java.util.*"%>
+	pageEncoding="utf-8" import="model.*,java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -10,10 +10,10 @@
 </head>
 
 <%
-	List<Risk> risks = new ArrayList<Risk>();
-	risks.add(new Risk(1L, "TEST", 1, 1, "w", "z", "y"));
-	risks.add(new Risk(2L, "TEST", 1, 1, "w", "z", "y"));
-	risks.add(new Risk(3L, "TEST", 1, 1, "w", "z", "y"));
+	List<risk> risks = new ArrayList<risk>();
+	risks.add(new risk(1, "TEST","111", 1, 1, "w", "z", "y"));
+	risks.add(new risk(2, "TEST","111", 1, 1, "w", "z", "y"));
+	risks.add(new risk(3, "TEST","111", 1, 1, "w", "z", "y"));
 %>
 <body>
 	<h3 align="center">Manage your risks</h3>

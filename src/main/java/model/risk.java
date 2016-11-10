@@ -9,6 +9,22 @@ public class risk {
 	private String riskTrigger;
 	private String creatorName;
 	private String follower;
+	
+	public risk(){
+		
+	}
+	public risk(int id, String riskName, String riskContent, int riskPossibility, int riskEfficiency,
+			String riskTrigger, String creatorName, String follower) {
+		super();
+		this.id = id;
+		this.riskName = riskName;
+		this.riskContent = riskContent;
+		this.riskPossibility = riskPossibility;
+		this.riskEfficiency = riskEfficiency;
+		this.riskTrigger = riskTrigger;
+		this.creatorName = creatorName;
+		this.follower = follower;
+	}
 	public int getId() {
 		return id;
 	}
