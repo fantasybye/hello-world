@@ -100,7 +100,7 @@
 							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><%=risk.getRiskTrigger() %></td>
 							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><%=risk.getCreatorName() %></td>
 							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><%=risk.getFollower() %></td>
-							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'>[<a href='javascript:void(0)' onClick="" >修改</a>][<a href='javascript:void(0)' onClick="" >删除</a>]</td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'>[<a href='javascript:void(0)' onClick="" >修改</a>][<a href='javascript:void(0)' onClick="" >删除</a>][<a href='javascript:void(0)' onClick="" >跟踪</a>]</td>
 						</tr>
 						<%
 							}
