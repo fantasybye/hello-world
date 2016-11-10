@@ -26,6 +26,7 @@ body{
 	text-align:center;
 }
 
+
 .edit td{
 	background:#ffffff;
 	padding-left:10px;
@@ -45,6 +46,17 @@ body{
 	margin:auto;
 }
 
+.tracer footer{
+	background:#eff4f6;
+    border-top:1px solid #fff;
+    padding:12px 26px;
+    overflow:hidden;
+    width:620px;
+	height:50px;
+	text-align:right;
+	margin:auto;
+}
+
 .edit table{
 	border: 1px solid #C3D4DB;
     -webkit-border-radius:5px;
@@ -53,10 +65,14 @@ body{
 	cellspacing:1px;
 	font-family:Microsoft YaHei;
 }
+.tracer form{
+	font-family:Microsoft YaHei;
+	text-align:center;
+}
 .edit a{
 	display:inline;
 }
-#submit_button{
+.submit_button{
 	-moz-border-radius:2px;
     -webkit-border-radius:2px;
     border-radius:15px;
@@ -100,7 +116,6 @@ body{
 	top:50%;
 	margin:-130px 0 0 -166px;
 }
-
 .box.signup
 {
 	height:320px;
