@@ -18,10 +18,14 @@
         </action>
         
         <action name="register" class="servlet.UserAddAction" method="addUser">
-        	<result name="success">/risk.jsp</result>
+        	<result name="success">/risk</result>
         	<result name="fail">/failure.jsp</result>
         	<result name="already exist">/failure.jsp</result>
         	<result name="too short">/failure.jsp</result>
+        </action>
+        
+        <action name="risk" class="servlet.RiskAction" method="getAllRisk">
+        	<result name="success">/risk.jsp</result>
         </action>
         
         <action name="addrisk" class="servlet.RiskAction" method="addRisk">

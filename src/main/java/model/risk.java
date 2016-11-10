@@ -10,6 +10,10 @@ public class risk {
 	private String creatorName;
 	private String follower;
 	
+	private String riskPossibilityStr;
+	private String riskEfficiencyStr;
+	
+
 	public risk(){
 		
 	}
@@ -24,6 +28,33 @@ public class risk {
 		this.riskTrigger = riskTrigger;
 		this.creatorName = creatorName;
 		this.follower = follower;
+		switch(riskPossibility){
+			case 1:
+				this.riskPossibilityStr="低";
+				break;
+			case 2:
+				this.riskPossibilityStr="中";
+				break;
+			case 3:
+				this.riskPossibilityStr="高";
+				break;
+			default:
+				System.out.println("riskPossibility false");
+		}
+		
+		switch(riskEfficiency){
+		case 1:
+			this.riskEfficiencyStr="低";
+			break;
+		case 2:
+			this.riskEfficiencyStr="中";
+			break;
+		case 3:
+			this.riskEfficiencyStr="高";
+			break;
+		default:
+			System.out.println("riskEfficiencyStr false");
+	}
 	}
 	public int getId() {
 		return id;
@@ -72,6 +103,19 @@ public class risk {
 	}
 	public void setFollower(String follower) {
 		this.follower = follower;
+	}
+	
+	public String getRiskPossibilityStr() {
+		return riskPossibilityStr;
+	}
+	public void setRiskPossibilityStr(String riskPossibilityStr) {
+		this.riskPossibilityStr = riskPossibilityStr;
+	}
+	public String getRiskEfficiencyStr() {
+		return riskEfficiencyStr;
+	}
+	public void setRiskEfficiencyStr(String riskEfficiencyStr) {
+		this.riskEfficiencyStr = riskEfficiencyStr;
 	}
 
 }
