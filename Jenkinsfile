@@ -3,7 +3,6 @@ node {
         git 'https://github.com/fantasybye/hello-world.git'
     }
     stage('QA') {
-    	sh 'sudo chmod -R 777 /home/john/.jenkins'
         sh 'sonar-scanner'
     }
     stage('build') {
@@ -14,7 +13,7 @@ node {
         sh "docker stop my || true"
         sh "docker rm my || true"
         sh "docker run --name my -p 11111:8080 -d tomcat"
-        sh "docker cp target/MavenDemo.war my:/usr/local/tomcat/webapps"
+        sh "docker cp target/PRM.war my:/home/john/tomcat9.0.0.M11/webapps"
     }
     stage('results') {
         archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
