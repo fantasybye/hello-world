@@ -10,13 +10,15 @@
 <body>
 	<h3 align="center">Risks tracer</h3>
 	<form class=tracer>
-	<fieldset class="boxBody" width='600'>
+	<fieldset>
 		<label>风险名称</label>
 			<input type="text" tabindex="1" name="riskname">
 		<label>风险内容</label>
-			<input type="text" tabindex="2" name="riskcontent">
+			<textarea tabindex="2" name="riskcontent" style="height:80px;"></textarea>
 		<label>风险描述</label> 
-			<input type="text" tabindex="3" placeholder="Description" name="description">
+			<textarea tabindex="3" placeholder="Description" name="description" style="height:240px;"></textarea>
+		<p></p>	
+		<br/>	
 	</fieldset>
 	<footer> <input type="button" value="确认追踪信息"
 			onClick="" class="submit_button"> </footer>
