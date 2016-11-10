@@ -14,11 +14,11 @@
 <form class="box signup">	
 	<fieldset class="boxBody">
 	  <label>Username</label>
-	  <input type="text" tabindex="1" placeholder="Username" required>
+	  <input type="text" tabindex="1" placeholder="Username" name="rusername" required>
 	  <label>Password</label>
-	  <input type="password" tabindex="2" placeholder="Password" required>
+	  <input type="password" tabindex="2" placeholder="Password"  name="rpassword" required>
 	  <label>Comfirm Password</label>
-	  <input type="password" tabindex="3" placeholder="Password again" required>
+	  <input type="password" tabindex="3" placeholder="Password again" name="crpassword" required>
 	</fieldset>
 	<footer>
 	  <input type="submit" class="btnLogin" value="Sign up" tabindex="4">
