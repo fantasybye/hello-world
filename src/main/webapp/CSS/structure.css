@@ -46,8 +46,6 @@ body{
 }
 
 .edit table{
-	width:600px;
-	height:220px;
 	border: 1px solid #C3D4DB;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
@@ -55,7 +53,9 @@ body{
 	cellspacing:1px;
 	font-family:Microsoft YaHei;
 }
-
+.edit a{
+	display:inline;
+}
 #submit_button{
 	-moz-border-radius:2px;
     -webkit-border-radius:2px;
