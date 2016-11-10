@@ -2,8 +2,8 @@ package model;
 
 public class riskFollow {
 	private int id;
-	private int riskId;
-	private int followerId;
+	private String riskName;
+	private String follower;
 	private String description;
 	public int getId() {
 		return id;
@@ -11,17 +11,17 @@ public class riskFollow {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getRiskId() {
-		return riskId;
+	public String getRiskName() {
+		return riskName;
 	}
-	public void setRiskId(int riskId) {
-		this.riskId = riskId;
+	public void setRiskName(String riskName) {
+		this.riskName = riskName;
 	}
-	public int getFollowerId() {
-		return followerId;
+	public String getFollower() {
+		return follower;
 	}
-	public void setFollowerId(int followerId) {
-		this.followerId = followerId;
+	public void setFollower(String follower) {
+		this.follower = follower;
 	}
 	public String getDescription() {
 		return description;

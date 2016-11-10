@@ -8,7 +8,7 @@ public class risk {
 	private int riskEfficiency;
 	private String riskTrigger;
 	private String creatorName;
-	private String riskFollower;
+	private String follower;
 	public int getId() {
 		return id;
 	}
@@ -51,11 +51,11 @@ public class risk {
 	public void setCreatorName(String creatorName) {
 		this.creatorName = creatorName;
 	}
-	public String getRiskFollower() {
-		return riskFollower;
+	public String getFollower() {
+		return follower;
 	}
-	public void setRiskFollower(String riskFollower) {
-		this.riskFollower = riskFollower;
+	public void setFollower(String follower) {
+		this.follower = follower;
 	}
 
 }

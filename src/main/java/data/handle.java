@@ -11,7 +11,7 @@ public class handle implements haddleInterface{
 	
 	static String sql = null;  
     static ConnectMySQL db = null;  
-    static ResultSet ret = null; 
+    static ResultSet ret = null;
     
 	public ArrayList<risk> getAllRisk(){
 		ArrayList<risk> result=new ArrayList<risk>();
@@ -19,6 +19,7 @@ public class handle implements haddleInterface{
 		sql="select * from risk";
 		db=new ConnectMySQL(sql);
 		
+		handle h=new handle();
 		try {  
             ret = db.pst.executeQuery();//执行语句，得到结果集  
             while (ret.next()) {  
@@ -29,8 +30,8 @@ public class handle implements haddleInterface{
                 r.setRiskPossibility(ret.getInt(4));
                 r.setRiskEfficiency(ret.getInt(5));
                 r.setRiskTrigger(ret.getString(6));
-                r.setCreatorId(ret.getInt(7));
-                r.setRiskFollower(ret.getInt(8));
+                r.setCreatorName(h.getName(ret.getInt(7)));
+                r.setFollower(h.getName(ret.getInt(8)));
                 result.add(r);
             } 
             ret.close();  
@@ -49,6 +50,7 @@ public class handle implements haddleInterface{
 				+ " or creatorId LIKE '%"+s+"%' or riskFollower LIKE '%"+s+"%'";
 		db=new ConnectMySQL(sql);
 		
+		handle h=new handle();
 		try {  
             ret = db.pst.executeQuery();//执行语句，得到结果集  
             while (ret.next()) {  
@@ -59,8 +61,8 @@ public class handle implements haddleInterface{
                 r.setRiskPossibility(ret.getInt(4));
                 r.setRiskEfficiency(ret.getInt(5));
                 r.setRiskTrigger(ret.getString(6));
-                r.setCreatorId(ret.getInt(7));
-                r.setRiskFollower(ret.getInt(8));
+                r.setCreatorName(h.getName(ret.getInt(7)));
+                r.setFollower(h.getName(ret.getInt(8)));
                 result.add(r);
             } 
             ret.close();  
@@ -72,11 +74,12 @@ public class handle implements haddleInterface{
 	}//获得单个risk
 	
 	public boolean modifyRisk(risk r){
+		handle h=new handle();
 		int id=r.getId();
 		
 		sql="update risk set riskName= "+r.getRiskName()+",riskContent= "+r.getRiskContent()+",riskPossibility= "
 				+r.getRiskPossibility()+",riskEfficiency= "+r.getRiskEfficiency()+",riskTrigger= "+r.getRiskTrigger()
-				+",creatorId= "+r.getCreatorId()+",riskFollower= "+r.getRiskFollower()+"when id="+id;
+				+",creatorId= "+h.getId(r.getCreatorName())+",riskFollower= "+h.getId(r.getFollower())+"when id="+id;
 		db=new ConnectMySQL(sql);
 		try {
 	        db.pst.executeUpdate();
@@ -88,6 +91,7 @@ public class handle implements haddleInterface{
 	}//修改单个risk
 	
 	public boolean addRisk(risk r){
+		handle h=new handle();
 		sql="insert into risk (riskName,riskContent,riskPossibility,riskEfficiency,riskTrigger,creatorId,riskFollower) values(?,?,?,?,?,?,?)";
 		db=new ConnectMySQL(sql);
 		try {
@@ -96,8 +100,8 @@ public class handle implements haddleInterface{
 	        db.pst.setInt(3, r.getRiskPossibility());
 	        db.pst.setInt(4, r.getRiskEfficiency());
 	        db.pst.setString(5, r.getRiskTrigger());
-	        db.pst.setInt(6, r.getCreatorId());
-	        db.pst.setInt(7, r.getRiskFollower());
+	        db.pst.setInt(6, h.getId(r.getCreatorName()));
+	        db.pst.setInt(7, h.getId(r.getFollower()));
 	        db.pst.executeUpdate();
 	        db.close();//关闭连接
 	    } catch (SQLException e) {
@@ -124,14 +128,14 @@ public class handle implements haddleInterface{
 		
 		sql="select * from riskFollow";
 		db=new ConnectMySQL(sql);
-		
+		handle h=new handle();
 		try {  
             ret = db.pst.executeQuery();//执行语句，得到结果集  
             while (ret.next()) {  
                 riskFollow r=new riskFollow();
                 r.setId(ret.getInt(1)); 
-                r.setRiskId(ret.getInt(2));
-                r.setFollowerId(ret.getInt(3));
+                r.setRiskName(h.getName(ret.getInt(2)));
+                r.setFollower(h.getName(ret.getInt(3)));
                 r.setDescription(ret.getString(4));
                 result.add(r);
             } 
@@ -149,14 +153,14 @@ public class handle implements haddleInterface{
 		sql="select * from riskFollow when id LIKE '%"+s+"%' or riskId LIKE '%"+s+"%' or followerId LIKE '%"+s+"%'"
 				+ " or description LIKE '%"+s+"%'";
 		db=new ConnectMySQL(sql);
-		
+		handle h=new handle();
 		try {  
             ret = db.pst.executeQuery();//执行语句，得到结果集  
             while (ret.next()) {  
             	riskFollow r=new riskFollow();
                 r.setId(ret.getInt(1)); 
-                r.setRiskId(ret.getInt(2));
-                r.setFollowerId(ret.getInt(3));
+                r.setRiskName(h.getName(ret.getInt(2)));
+                r.setFollower(h.getName(ret.getInt(3)));
                 r.setDescription(ret.getString(4));
                 result.add(r);
             } 
@@ -169,9 +173,10 @@ public class handle implements haddleInterface{
 	}//获得单个riskFollow
 	
 	public boolean modifyRiskFollow(riskFollow r){
+		handle h=new handle();
 		int id=r.getId();
 		
-		sql="update riskFollow set riskId= "+r.getRiskId()+",followerId= "+r.getFollowerId()+",description= "
+		sql="update riskFollow set riskId= "+h.getId(r.getRiskName())+",followerId= "+h.getId(r.getFollower())+",description= "
 				+r.getDescription()+"when id="+id;
 		db=new ConnectMySQL(sql);
 		try {
@@ -186,9 +191,10 @@ public class handle implements haddleInterface{
 	public boolean addRiskFollow(riskFollow r){
 		sql="insert into riskFollow (riskId,followerId,description) values(?,?,?)";
 		db=new ConnectMySQL(sql);
+		handle h=new handle();
 		try {
-	        db.pst.setInt(1, r.getRiskId());
-	        db.pst.setInt(2, r.getFollowerId());
+	        db.pst.setInt(1, h.getId(r.getRiskName()));
+	        db.pst.setInt(2, h.getId(r.getFollower()));
 	        db.pst.setString(3, r.getDescription());
 	        db.pst.executeUpdate();
 	        db.close();//关闭连接
@@ -268,4 +274,40 @@ public class handle implements haddleInterface{
         } 
 		return 0;
 	}//添加用户
+	
+	private String getName(int id){
+		String result="";
+		sql="select * from risk where risk.id="+id;
+		db=new ConnectMySQL(sql);
+		
+		try {  
+            ret = db.pst.executeQuery();//执行语句，得到结果集  
+            while (ret.next()) {  
+                result=ret.getString("userName");
+            } 
+            ret.close();  
+            db.close();//关闭连接  
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+        } 
+		return result;
+	}//根据userId得到userName
+	
+	private int getId(String name){
+		int result=-1;
+		sql="select * from risk where risk.userName="+name;
+		db=new ConnectMySQL(sql);
+		
+		try {  
+            ret = db.pst.executeQuery();//执行语句，得到结果集  
+            while (ret.next()) {  
+                result=ret.getInt("id");
+            } 
+            ret.close();  
+            db.close();//关闭连接  
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+        } 
+		return result;
+	}//根据userId得到userName
 }
