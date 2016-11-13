@@ -25,3 +25,6 @@ CREATE TABLE riskFollow(
   description varchar(100)
 
 );
+alter table user convert to character set gbk;
+alter table risk convert to character set gbk;
+alter table riskFollow convert to character set gbk;
