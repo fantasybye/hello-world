@@ -11,7 +11,7 @@
 
 <body>
 <h1>Sign in to PRM</h1>
-<form class="box login" action = "login">	
+<form class="box login" action = "login" method="post">	
 	<fieldset class="boxBody">
 	  <label>Username</label>
 	  <input type="text" tabindex="1" placeholder="Username" name="username" required>

@@ -95,6 +95,7 @@ public class handle implements handleInterface{
 		sql="insert into risk (riskName,riskContent,riskPossibility,riskEfficiency,riskTrigger,creatorId,riskFollower) values (?,?,?,?,?,?,?)";
 		db=new ConnectMySQL(sql);
 		try {
+			System.out.println(r.getRiskName());
 	        db.pst.setString(1, r.getRiskName());
 	        db.pst.setString(2, r.getRiskContent());
 	        db.pst.setInt(3, r.getRiskPossibility());
@@ -346,6 +347,16 @@ public class handle implements handleInterface{
         } 
 		return result;
 	}//根据riskName得到riskId
+	
+	
+	
+	public risk getOneRisk(int riskid){
+		return new risk();
+	}
+	
+	public ArrayList<riskFollow> getRiskFollow(int riskid){
+		return new ArrayList<riskFollow>();
+	}
 //-----------------------------------------------------------------------------------------------------
 	
 //	public static void main(String[] args){

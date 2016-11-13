@@ -20,4 +20,7 @@ public interface handleInterface {
 	
 	public int judgeLogin(String userName,String pwd);//登录验证，0成功，1用户名错，2密码错,-1失败
 	public int addUser(String name,String psw,boolean is);//添加用户，0成功，1用户名已存在，2密码过短，-1失败
+
+	public risk getOneRisk(int riskid);
+	public ArrayList<riskFollow> getRiskFollow(int riskid);
 }

@@ -99,6 +99,7 @@ public class RiskAction extends ActionSupport{
 					break;
 				default:
 					System.out.println("riskPossibility false");
+					break;
 			}
 			
 			switch(risklist.get(i).getRiskEfficiency()){
@@ -113,15 +114,18 @@ public class RiskAction extends ActionSupport{
 					break;
 				default:
 					System.out.println("riskEfficiencyStr false");
+					break;
 			}
 		}
+		
 		return "success";
 		
 	}
 
 	public String addRisk(){
-		int rposvalue=0;
-		int reffvalue=0;
+		System.out.println("addrisk!");
+		int rposvalue=3;
+		int reffvalue=3;
 		boolean result=false;
 		handle h=new handle();
 		
@@ -140,10 +144,11 @@ public class RiskAction extends ActionSupport{
 		}else if(reff.equals("hign")){
 			reffvalue=3;
 		}
-		
+		System.out.println(rname);
 		risk r=new risk(1,rname,rcontent,rposvalue,reffvalue,risk_trigger,risk_committer,risk_tracker);
 		result=h.addRisk(r);
 		if(result){
+			getAllRisk();
 			return "success";
 		}
 		else{

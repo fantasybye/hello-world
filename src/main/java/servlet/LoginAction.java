@@ -58,12 +58,44 @@ public class LoginAction extends ActionSupport{
 	}
 	
 	public String judgeLogin(){
+		System.out.println("login!");
 		handle h=new handle();
 		int result=h.judgeLogin(username,password);
 		switch(result){
 			case 0:	
 				loginuser=new User(username);
 				risklist=h.getAllRisk();
+				for(int i=0;i<risklist.size();i++){
+					switch(risklist.get(i).getRiskPossibility()){
+						case 1:
+							risklist.get(i).setRiskPossibilityStr("低");
+							break;
+						case 2:
+							risklist.get(i).setRiskPossibilityStr("中");
+							break;
+						case 3:
+							risklist.get(i).setRiskPossibilityStr("高");
+							break;
+						default:
+							System.out.println("riskPossibility false");
+							break;
+					}
+					
+					switch(risklist.get(i).getRiskEfficiency()){
+						case 1:
+							risklist.get(i).setRiskEfficiencyStr("低");
+							break;
+						case 2:
+							risklist.get(i).setRiskEfficiencyStr("中");
+							break;
+						case 3:
+							risklist.get(i).setRiskEfficiencyStr("高");
+							break;
+						default:
+							System.out.println("riskEfficiencyStr false");
+							break;
+					}
+				}
 				return "success";
 			case -1:
 				return "fail";

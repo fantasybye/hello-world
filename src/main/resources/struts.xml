@@ -11,25 +11,30 @@
     <package name="default" namespace="/" extends="struts-default">
         
         <action name="login" class="servlet.LoginAction" method="judgeLogin">
-        	<result name="success">/risk.jsp</result>
+        	<result type="chain" name="success">showrisk</result>
         	<result name="fail">/failure.jsp</result>
         	<result name="not found">/failure.jsp</result>
         	<result name="wrong">/failure.jsp</result>
         </action>
         
         <action name="register" class="servlet.UserAddAction" method="addUser">
-        	<result name="success">/risk</result>
+        	<result type="chain" name="success">showrisk</result>
         	<result name="fail">/failure.jsp</result>
         	<result name="already exist">/failure.jsp</result>
         	<result name="too short">/failure.jsp</result>
         </action>
         
-        <action name="risk" class="servlet.RiskAction" method="getAllRisk">
+        <action name="showrisk" class="servlet.RiskAction" method="getAllRisk">
         	<result name="success">/risk.jsp</result>
         </action>
         
         <action name="addrisk" class="servlet.RiskAction" method="addRisk">
-        	<result name="success"></result>
+        	<result type="chain" name="success">showrisk</result>
+        </action>
+        
+        <action name="riskfollow" class="servlet.RiskFollowAction" method="getRiskFollow">
+        	<result name="success">/riskTracer.jsp</result>
+        	<result type="chain" name="fail">showrisk</result>
         </action>
         
     </package>

@@ -3,6 +3,7 @@ package model;
 public class riskFollow {
 	private int id;
 	private String riskName;
+	private String riskContent;
 	private String follower;
 	private String description;
 	public int getId() {
@@ -28,5 +29,11 @@ public class riskFollow {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getRiskContent() {
+		return riskContent;
+	}
+	public void setRiskContent(String riskContent) {
+		this.riskContent = riskContent;
 	}
 }
