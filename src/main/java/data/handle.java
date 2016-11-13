@@ -351,20 +351,62 @@ public class handle implements handleInterface{
 	
 	
 	public risk getOneRisk(int riskid){
-		return new risk();
+		risk r=new risk();
+		sql="select * from risk where riskId="+riskid;
+		db=new ConnectMySQL(sql);
+		
+		handle h=new handle();
+		try {  
+			ret = db.pst.executeQuery();//执行语句，得到结果集
+            while (ret.next()) {  
+                r.setId(ret.getInt(1)); 
+                r.setRiskName(ret.getString(2));
+                r.setRiskContent(ret.getString(3));
+                r.setRiskPossibility(ret.getInt(4));
+                r.setRiskEfficiency(ret.getInt(5));
+                r.setRiskTrigger(ret.getString(6));
+                r.setCreatorName(h.getName(ret.getInt(7)));
+                r.setFollower(h.getName(ret.getInt(8)));
+            } 
+            ret.close();  
+            db.close();//关闭连接  
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+        } 
+		return r;
 	}
 	
 	public ArrayList<riskFollow> getRiskFollow(int riskid){
-		return new ArrayList<riskFollow>();
+		ArrayList<riskFollow> result=new ArrayList<riskFollow>();
+		sql="select * from riskFollow where riskId="+riskid;
+		db=new ConnectMySQL(sql);
+		
+		handle h=new handle();
+		try {  
+			ret = db.pst.executeQuery();//执行语句，得到结果集  
+            while (ret.next()) {  
+            	riskFollow r=new riskFollow();
+                r.setId(ret.getInt(1)); 
+                r.setRiskName(h.getName(ret.getInt(2)));
+                r.setFollower(h.getName(ret.getInt(3)));
+                r.setDescription(ret.getString(4));
+                result.add(r);
+            } 
+            ret.close();  
+            db.close();//关闭连接  
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+        } 
+		return result;
 	}
 //-----------------------------------------------------------------------------------------------------
 	
 //	public static void main(String[] args){
 //		handle h=new handle();
-//		ArrayList<riskFollow> a=new ArrayList<riskFollow>();
-//		a=h.getAllRiskFollow();
+//		risk a=new risk();
+//		a=h.getOneRisk(1);
 //		
-//		System.out.println(a.get(0).getRiskName());
+//		System.out.println(a.getRiskName());
 //		System.out.println();
 //		sql="select * from riskFollow";
 //		db=new ConnectMySQL(sql);
