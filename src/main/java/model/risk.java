@@ -30,13 +30,13 @@ public class risk {
 		this.follower = follower;
 		switch(riskPossibility){
 			case 1:
-				this.riskPossibilityStr="µÍ";
+				this.riskPossibilityStr="ä½Ž";
 				break;
 			case 2:
-				this.riskPossibilityStr="ÖÐ";
+				this.riskPossibilityStr="ä¸­";
 				break;
 			case 3:
-				this.riskPossibilityStr="¸ß";
+				this.riskPossibilityStr="é«˜";
 				break;
 			default:
 				System.out.println("riskPossibility false");
@@ -44,13 +44,13 @@ public class risk {
 		
 		switch(riskEfficiency){
 		case 1:
-			this.riskEfficiencyStr="µÍ";
+			this.riskEfficiencyStr="ä½Ž";
 			break;
 		case 2:
-			this.riskEfficiencyStr="ÖÐ";
+			this.riskEfficiencyStr="ä¸­";
 			break;
 		case 3:
-			this.riskEfficiencyStr="¸ß";
+			this.riskEfficiencyStr="é«˜";
 			break;
 		default:
 			System.out.println("riskEfficiencyStr false");
