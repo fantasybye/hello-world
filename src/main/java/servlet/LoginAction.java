@@ -58,7 +58,6 @@ public class LoginAction extends ActionSupport{
 	}
 	
 	public String judgeLogin(){
-		System.out.println("login!");
 		handle h=new handle();
 		int result=h.judgeLogin(username,password);
 		switch(result){

@@ -37,6 +37,11 @@
         	<result type="chain" name="fail">showrisk</result>
         </action>
         
+        <action name="riskfollowmodify" class="servlet.RiskFollowAction" method="modifyRiskFollow">
+        	<result type="chain" name="success">showrisk</result>
+        	<result type="chain" name="fail">riskfollow</result>
+        </action>
+        
     </package>
 
     <!-- Add packages here -->

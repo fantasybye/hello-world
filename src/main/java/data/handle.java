@@ -352,7 +352,7 @@ public class handle implements handleInterface{
 	
 	public risk getOneRisk(int riskid){
 		risk r=new risk();
-		sql="select * from risk where riskId="+riskid;
+		sql="select * from risk where id="+riskid;
 		db=new ConnectMySQL(sql);
 		
 		handle h=new handle();
