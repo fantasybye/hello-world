@@ -176,7 +176,6 @@ public class handle implements handleInterface{
 	public boolean modifyRiskFollow(riskFollow r){
 		handle h=new handle();
 		int id=r.getId();
-		
 		sql="update riskFollow set riskId="+h.getRiskId(r.getRiskName())+",followerId="+h.getId(r.getFollower())+",description='"
 				+r.getDescription()+"' where id="+id;
 		db=new ConnectMySQL(sql);
@@ -387,7 +386,7 @@ public class handle implements handleInterface{
             while (ret.next()) {  
             	riskFollow r=new riskFollow();
                 r.setId(ret.getInt(1)); 
-                r.setRiskName(h.getName(ret.getInt(2)));
+                r.setRiskName(h.getRiskName(ret.getInt(2)));
                 r.setFollower(h.getName(ret.getInt(3)));
                 r.setDescription(ret.getString(4));
                 result.add(r);

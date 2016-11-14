@@ -16,7 +16,7 @@
 %>
 <body>
 	<h3 align="center">Manage your risks</h3>
-	<form class="edit" action="addrisk">
+	<form class="edit" action="addrisk" method="post">
 		<table width='600' align="center">
 			<tr>
 			<td width='150' align="center">风险名称</td>
@@ -84,8 +84,8 @@
 							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property value="#risk.creatorName"></s:property></td>
 							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property value="#risk.follower"></s:property></td>
 							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'>[
-									<a href='riskmodify?selectedriskid=<s:property value="#risk.id"></s:property>' type="submit">修改</a><input name="selectedriskid" type="hidden" value='<s:property value="#risk.id"></s:property>'>][
-									<a href='riskdel?selectedriskid=<s:property value="#risk.id"></s:property>' type="submit">删除</a><input name="selectedriskid" type="hidden" value='<s:property value="#risk.id"></s:property>'>][
+									<a href='riskmodify?selectedriskid=<s:property value="#risk.id"></s:property>'  type="submit">修改</a><input name="selectedriskid" type="hidden" value='<s:property value="#risk.id"></s:property>'>][
+									<a href='riskdel?selectedriskid=<s:property value="#risk.id"></s:property>'  type="submit">删除</a><input name="selectedriskid" type="hidden" value='<s:property value="#risk.id"></s:property>'>][
 									<a href='riskfollow?selectedriskid=<s:property value="#risk.id"></s:property>' type="submit">跟踪</a><input name="selectedriskid" type="hidden" value='<s:property value="#risk.id"></s:property>'>]								
 							</td>
 						</tr>
