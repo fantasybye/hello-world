@@ -217,13 +217,13 @@ public class handle implements handleInterface{
 	}//删除单个riskFollow
 //--------------------------------------------------------------------------------------------------//	
 	public int judgeLogin(String userName,String pwd){
-		sql="select * from user where userName='"+userName+"'";
-		db=new ConnectMySQL(sql);
+		String sql="select * from user where userName='"+userName+"'";
+		ConnectMySQL db=new ConnectMySQL(sql);
 		
 		int result=2;
 		int temp=0;
 		try {  
-            ret = db.pst.executeQuery();//执行语句，得到结果集  
+           ResultSet ret = db.pst.executeQuery();//执行语句，得到结果集  
             while (ret.next()) {  
                 temp=1;
                 String p=ret.getString("password");
@@ -399,7 +399,7 @@ public class handle implements handleInterface{
 		return result;
 	}
 //-----------------------------------------------------------------------------------------------------
-	
+//	
 //	public static void main(String[] args){
 //		handle h=new handle();
 //		risk a=new risk();
