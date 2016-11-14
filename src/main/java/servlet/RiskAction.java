@@ -89,13 +89,13 @@ public class RiskAction extends ActionSupport{
 		for(int i=0;i<risklist.size();i++){
 			switch(risklist.get(i).getRiskPossibility()){
 				case 1:
-					risklist.get(i).setRiskPossibilityStr("µÍ");
+					risklist.get(i).setRiskPossibilityStr("ä½Ž");
 					break;
 				case 2:
-					risklist.get(i).setRiskPossibilityStr("ÖÐ");
+					risklist.get(i).setRiskPossibilityStr("ä¸­");
 					break;
 				case 3:
-					risklist.get(i).setRiskPossibilityStr("¸ß");
+					risklist.get(i).setRiskPossibilityStr("é«˜");
 					break;
 				default:
 					System.out.println("riskPossibility false");
@@ -104,13 +104,13 @@ public class RiskAction extends ActionSupport{
 			
 			switch(risklist.get(i).getRiskEfficiency()){
 				case 1:
-					risklist.get(i).setRiskEfficiencyStr("µÍ");
+					risklist.get(i).setRiskEfficiencyStr("ä½Ž");
 					break;
 				case 2:
-					risklist.get(i).setRiskEfficiencyStr("ÖÐ");
+					risklist.get(i).setRiskEfficiencyStr("ä¸­");
 					break;
 				case 3:
-					risklist.get(i).setRiskEfficiencyStr("¸ß");
+					risklist.get(i).setRiskEfficiencyStr("é«˜");
 					break;
 				default:
 					System.out.println("riskEfficiencyStr false");
