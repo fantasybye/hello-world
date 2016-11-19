@@ -1,26 +1,26 @@
-package data;
-
-import java.util.ArrayList;
-
-import model.risk;
-import model.riskFollow;
-
-public interface handleInterface {
-	public ArrayList<risk> getAllRisk();//»ñµÃËùÓÐrisk
-	public ArrayList<risk> getSingleRisk(String s);//»ñµÃ¹Ø¼ü×Örisk
-	public boolean modifyRisk(risk r);//ÐÞ¸Ärisk
-	public boolean addRisk(risk r);//Ìí¼Órisk
-	public boolean deleteRisk(int riskId);//É¾³ýrisk
-	
-	public ArrayList<riskFollow> getAllRiskFollow();//»ñµÃËùÓÐriskFollow
-	public ArrayList<riskFollow> getSingleRiskFollow(String s);//»ñµÃ¹Ø¼ü×ÖriskFollow
-	public boolean modifyRiskFollow(riskFollow r);//ÐÞ¸ÄriskFollow
-	public boolean addRiskFollow(riskFollow r);//Ìí¼ÓriskFollow
-	public boolean deleteRiskFollow(int riskFollowId);//É¾³ýriskFollow
-	
-	public int judgeLogin(String userName,String pwd);//µÇÂ¼ÑéÖ¤£¬0³É¹¦£¬1ÓÃ»§Ãû´í£¬2ÃÜÂë´í,-1Ê§°Ü
-	public int addUser(String name,String psw,boolean is);//Ìí¼ÓÓÃ»§£¬0³É¹¦£¬1ÓÃ»§ÃûÒÑ´æÔÚ£¬2ÃÜÂë¹ý¶Ì£¬-1Ê§°Ü
-
-	public risk getOneRisk(int riskid);
-	public ArrayList<riskFollow> getRiskFollow(int riskid);
-}
+//package data;
+//
+//import java.util.ArrayList;
+//
+//import model.risk;
+//import model.riskFollow;
+//
+//public interface handleInterface {
+//	public ArrayList<risk> getAllRisk();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½risk
+//	public ArrayList<risk> getSingleRisk(String s);//ï¿½ï¿½Ã¹Ø¼ï¿½ï¿½ï¿½risk
+//	public boolean modifyRisk(risk r);//ï¿½Þ¸ï¿½risk
+//	public boolean addRisk(risk r);//ï¿½ï¿½ï¿½risk
+//	public boolean deleteRisk(int riskId);//É¾ï¿½ï¿½risk
+//	
+//	public ArrayList<riskFollow> getAllRiskFollow();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½riskFollow
+//	public ArrayList<riskFollow> getSingleRiskFollow(String s);//ï¿½ï¿½Ã¹Ø¼ï¿½ï¿½ï¿½riskFollow
+//	public boolean modifyRiskFollow(riskFollow r);//ï¿½Þ¸ï¿½riskFollow
+//	public boolean addRiskFollow(riskFollow r);//ï¿½ï¿½ï¿½riskFollow
+//	public boolean deleteRiskFollow(int riskFollowId);//É¾ï¿½ï¿½riskFollow
+//	
+//	public int judgeLogin(String userName,String pwd);//ï¿½ï¿½Â¼ï¿½ï¿½Ö¤ï¿½ï¿½0ï¿½É¹ï¿½ï¿½ï¿½1ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½,-1Ê§ï¿½ï¿½
+//	public int addUser(String name,String psw,boolean is);//ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½0ï¿½É¹ï¿½ï¿½ï¿½1ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ï¿½Ú£ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì£ï¿½-1Ê§ï¿½ï¿½
+//
+//	public risk getOneRisk(int riskid);
+//	public ArrayList<riskFollow> getRiskFollow(int riskid);
+//}
