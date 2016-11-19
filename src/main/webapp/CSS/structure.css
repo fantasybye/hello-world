@@ -22,9 +22,6 @@ body{
 	color:#333;
 }
 
-.edit form{
-	text-align:center;
-}
 
 
 .edit td{
@@ -47,8 +44,11 @@ body{
 }
 
 
+form{
+	text-align:center;
+}
 
-.edit table{
+table{
 	border: 1px solid #C3D4DB;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
@@ -69,9 +69,6 @@ body{
 	padding-left:30px;
 }
 
-.tracer form{
-	text-align:center;
-}
 
 .tracer label{
 	display: block;
@@ -107,15 +104,6 @@ body{
 	margin:auto;
 }
 
-.tracer table{
-	border: 1px solid #C3D4DB;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px; 
-    background:#fefefe;
-    cellspacing:1px;
-	font-family:Microsoft YaHei;
-}
 
 .submit_button{
 	-moz-border-radius:2px;
@@ -136,6 +124,32 @@ body{
     margin:10px 0px 10px;
     margin-right:20px;
 	padding:7px 21px;
+}
+
+.arrange footer{
+	background:#eff4f6;
+    border-top:1px solid #fff;
+    padding:10px 26px;
+    overflow:hidden;
+    width:780px;
+	height:50px;
+	margin:auto;
+	text-align:right;
+	font-family:Microsoft YaHei;
+}
+
+.footer label{
+	font-weight:bold;
+	float:left;
+	height:22px;
+	margin-top:14px;
+}
+
+.footer input[type=text]{
+	float:left;
+	height:16px;
+	width:250px;
+	margin:14px;
 }
 .box
 {
@@ -161,6 +175,7 @@ body{
 	left:50%;
 	top:50%;
 	margin:-130px 0 0 -166px;
+	text-align:left;
 }
 .box.signup
 {
