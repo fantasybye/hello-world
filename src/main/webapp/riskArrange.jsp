@@ -52,7 +52,6 @@
 				<input type="submit" value="查询所有风险" class="submit_button"> 
 			</form>
 		</footer>
-		<p>${message}</p>
-		
+		<p>${message}</p>		
 </body>
 </html>
