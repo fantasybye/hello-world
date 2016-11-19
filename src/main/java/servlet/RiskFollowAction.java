@@ -1,10 +1,13 @@
 package servlet;
 
 import java.util.ArrayList;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import data.handle;
+import data.riskFollowLogic;
+import data.riskLogic;
 import model.risk;
 import model.riskFollow;
 
@@ -72,40 +75,44 @@ public class RiskFollowAction extends ActionSupport{
 	}
 	
 	public String getRiskFollow(){
-		System.out.println("riskfollow!");
-		handle h=new handle();
-		risk ri=h.getOneRisk(selectedriskid);
-		ArrayList <riskFollow>result=h.getRiskFollow(selectedriskid);
+		ActionContext actionContext = ActionContext.getContext();			  
+	    Map session = actionContext.getSession();  			  
+	    int projectid=(Integer)session.get("projectid");	
+		
+		riskFollowLogic rf=new riskFollowLogic();
+		riskLogic r=new riskLogic();
+		risk risk=rf.getLatestRiskInfo2(selectedriskid);
+		ArrayList <riskFollow> result=rf.getRiskFollow(projectid,selectedriskid);
 		if(result.size()==0){
 			return "fail";
 		}
 		else{
-			riskfollow=h.getRiskFollow(selectedriskid).get(0);
-			riskfollow.setRiskContent(ri.getRiskContent());
+			riskfollow=result.get(0);
+			riskfollow.setRiskContent(risk.getRiskContent());
 			return "success";
 		}
 	}
 	
-	public String modifyRiskFollow(){
-		
-		System.out.println("modify");
-
-		handle h=new handle();
-		riskFollow r=new riskFollow();
-		r.setId(riskfollow_id);
-		//System.out.println(riskfollow_id);
-		r.setRiskName(riskname);
-		//System.out.println(riskname);
-		r.setRiskContent(riskcontent);
-		r.setDescription(description);
-		r.setFollower(riskfollow_follower);
-		boolean result=h.modifyRiskFollow(r);
-		if(result==true){
-			System.out.println("success");
-			return "success";
-		}else{
-			return "fail";
-		}
-	}
+//	public String modifyRiskFollow(){
+//		
+//		System.out.println("modify");
+//
+//		handle h=new handle();
+//		riskFollow r=new riskFollow();
+//		r.setId(riskfollow_id);
+//		//System.out.println(riskfollow_id);
+//		r.setRiskName(riskname);
+//		//System.out.println(riskname);
+//		r.setRiskContent(riskcontent);
+//		r.setDescription(description);
+//		r.setFollower(riskfollow_follower);
+//		boolean result=h.modifyRiskFollow(r);
+//		if(result==true){
+//			System.out.println("success");
+//			return "success";
+//		}else{
+//			return "fail";
+//		}
+//	}
 	
 }

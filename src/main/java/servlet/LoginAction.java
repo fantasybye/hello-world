@@ -6,7 +6,6 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import data.handle;
 import data.userLogic;
 import model.User;
 import model.risk;

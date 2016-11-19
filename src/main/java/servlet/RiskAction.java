@@ -1,13 +1,16 @@
 package servlet;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.Map;
 
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import data.handle;
+import data.riskLogic;
 import model.risk;
 
 public class RiskAction extends ActionSupport{
@@ -20,6 +23,7 @@ public class RiskAction extends ActionSupport{
 	private String risk_trigger;
 	private String risk_committer;
 	private String risk_tracker;
+	private int selectedprojectid;
 	
 	public ArrayList<risk> getRisklist() {
 		return risklist;
@@ -85,6 +89,16 @@ public class RiskAction extends ActionSupport{
 	public void setRisk_tracker(String risk_tracker) {
 		this.risk_tracker = risk_tracker;
 	}
+	
+	
+
+	public int getSelectedprojectid() {
+		return selectedprojectid;
+	}
+
+	public void setSelectedprojectid(int selectedprojectid) {
+		this.selectedprojectid = selectedprojectid;
+	}
 
 	public String getAllRisk(){
 		ActionContext actionContext = ActionContext.getContext();			  
@@ -97,9 +111,10 @@ public class RiskAction extends ActionSupport{
 		
 	}
 	
+	
 	private void setRiskList(){
-		handle h=new handle();
-		risklist=h.getAllRisk();
+		riskLogic r=new riskLogic();
+		risklist=r.getAllRisk();
 		for(int i=0;i<risklist.size();i++){
 			switch(risklist.get(i).getRiskPossibility()){
 				case 1:
@@ -133,12 +148,11 @@ public class RiskAction extends ActionSupport{
 		}
 	}
 
-	public String addRisk(){
+	public String addProjectRisk(){
 		System.out.println("addrisk!");
 		int rposvalue=3;
 		int reffvalue=3;
-		boolean result=false;
-		handle h=new handle();
+		riskLogic rl=new riskLogic();
 		
 		if(rpos.equals("low")){
 			rposvalue=1;
@@ -155,15 +169,16 @@ public class RiskAction extends ActionSupport{
 		}else if(reff.equals("hign")){
 			reffvalue=3;
 		}
-		System.out.println(rname);
+		ActionContext actionContext = ActionContext.getContext();			  
+	    Map session = actionContext.getSession();  			  
+	    String userName=(String)session.get("username");	
 		risk r=new risk(1,rname,rcontent,rposvalue,reffvalue,risk_trigger,risk_committer,risk_tracker);
-		result=h.addRisk(r);
-		if(result){
-			setRiskList();
-			return "success";
-		}
-		else{
-			return "failure";
-		}
+		
+		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+		r.setCreateTime(currentDate);
+		
+		int res=rl.addProjectRisk(r,selectedprojectid);
+		setRiskList();
+		return "success";
 	}
 }

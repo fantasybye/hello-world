@@ -6,7 +6,6 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import data.handle;
 import data.projectLogic;
 import data.riskLogic;
 import model.risk;
@@ -45,7 +44,17 @@ public class ProjectAction extends ActionSupport{
 	
 	public String getProjectRisk(){
 		riskLogic r=new riskLogic();
-		risklist=r.getExistRisk(selectedprojectid);
+		if(selectedprojectid>0){
+			risklist=r.getExistRisk(selectedprojectid);
+			ActionContext actionContext = ActionContext.getContext();			  
+		    Map session = actionContext.getSession();  			  
+		    session.put("projectid",selectedprojectid);		
+		}
+		else{
+			ActionContext actionContext = ActionContext.getContext();			  
+		    Map session = actionContext.getSession();  			  
+		    risklist=r.getExistRisk((Integer)session.get("projectid"));		
+		}
 		setRiskList();
 		return "success";
 	}

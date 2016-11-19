@@ -28,19 +28,35 @@
         	<result name="success">/riskArrange.jsp</result>
         </action>
         
+         <action name="projectDel" class="servlet.RiskArrangeAction" method="delProject">
+        	<result name="success">/riskArrange.jsp</result>
+        </action>
+        
+        <action name="addProject" class="servlet.RiskArrangeAction" method="addProject">
+        	<result name="success">/riskArrange.jsp</result>
+        	<result name="fail">/riskArrange.jsp</result>
+        </action>       
+                
         <action name="projectDetail" class="servlet.ProjectAction" method="getProjectRisk">
         	<result name="success">/risk.jsp</result>
         </action>
-        
         
         <action name="getAllRisk" class="servlet.RiskAction" method="getAllRisk">
         	<result name="success">/showAllRisks.jsp</result>
         </action>
         
-        <action name="addProject" class="servlet.RiskArrangeAction" method="addProject">
-        	<result type="chain" name="success">/riskArrange.jsp</result>
-        	<result type="chain" name="fail">/riskArrange.jsp</result>
+        <action name="addProjectRisk" class="servlet.RiskAction" method="getProjectRisk">
+        	<result type="chain" name="success">projectDetail</result>
         </action>
+        
+	  	<action name="importRisk" class="servlet.ImportRiskAction" method="getIniRisk">
+        	<result name="success">/import.jsp</result>
+        </action>
+        
+        <action name="importDateChoice" class="servlet.ImportRiskAction" method="getChoiceRisk">
+        	<result name="success">/import.jsp</result>
+        </action>
+        
 
     </package>
 

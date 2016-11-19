@@ -19,6 +19,7 @@ public class RiskArrangeAction extends ActionSupport{
 	private ArrayList<project> projectlist;
 	private String plan_name;
 	private String message;
+	private int selectedprojectid;
 	
 	public ArrayList<project> getProjectlist() {
 		return projectlist;
@@ -44,6 +45,14 @@ public class RiskArrangeAction extends ActionSupport{
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public int getSelectedprojectid() {
+		return selectedprojectid;
+	}
+
+	public void setSelectedprojectid(int selectedprojectid) {
+		this.selectedprojectid = selectedprojectid;
+	}
 
 	
 	public String getRiskArrange(){
@@ -64,19 +73,36 @@ public class RiskArrangeAction extends ActionSupport{
 	public String addProject(){
 		projectLogic p=new projectLogic();
 		boolean duplicate=false;
+		getRiskArrange();
+		System.out.println("");
 		for(int i=0;i<projectlist.size();i++){
 			if(projectlist.get(i).getProjectName().equals(plan_name)){
 				duplicate=true;
 			}
 		}
+		System.out.println(projectlist.size());
+		System.out.println(message);
+		if(plan_name.equals("")){
+			message="请输入计划名";
+			System.out.println(message);
+			return "fail";
+		}
 		if(duplicate){
 			message="同名管理计划已存在";
+			System.out.println(message);
 			return "fail";
 		}
 		int result=p.addProject(plan_name, creatorName);
 		if(result>=0){
 			getRiskArrange();
 		}
+		return "success";
+	}
+	
+	public String delProject(){
+		projectLogic p=new projectLogic();
+		int result=p.deleteProject(selectedprojectid);
+		getRiskArrange();
 		return "success";
 	}
 }
