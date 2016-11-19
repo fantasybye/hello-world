@@ -13,9 +13,19 @@ public class UserAddAction extends ActionSupport{
 	private String crpassword;
 	private boolean isadmin;
 	private User loginuser;
+	private String message;
 	private ArrayList<risk> risklist; 
 	
 	
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	public String getRusername() {
 		return rusername;
 	}
@@ -76,13 +86,14 @@ public class UserAddAction extends ActionSupport{
 				loginuser=new User(rusername);
 				risklist=h.getAllRisk();
 				return "success";
-			case 1:
-				return "already exist";
-			case 2:
-				return "too short";
 			case -1:
-				return "fail";
+				message="用户名已存在";
+				return "already exist";
+			case -2:
+				message="密码少于6位";
+				return "too short";
 			default:
+				message="注册失败";
 				return "fail";
 		}
 	}
