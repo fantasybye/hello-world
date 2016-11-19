@@ -4,9 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Risks Info</title>
+<link rel="stylesheet" type="text/css" href="CSS/structure.css">
 </head>
 <body>
-
+<h3>Risks info</h3>
+ 	<form class="import">
+	<label>开始时间</label><input type=date>
+	<label>结束时间</label><input type=date>
+	<select>
+		<option value="volvo" selected="selected">无</option>
+  		<option value="saab">被识别最多的风险</option>
+  		<option value="opel">演化成问题最多的风险</option>
+	</select>
+	</form>
 </body>
 </html>
