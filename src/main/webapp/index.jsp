@@ -18,7 +18,7 @@
 	  <input type="text" tabindex="1" placeholder="Username" name="username" required>
 	  <label>Password</label>
 	  <input type="password" tabindex="2" placeholder="Password" name="password" required>
-	  <p>${message}</p>
+	  <p style="color:red">${message}</p>
 	</fieldset>
 	<footer>
 	  <input type="submit" class="btnLogin" value="Login" tabindex="4">
