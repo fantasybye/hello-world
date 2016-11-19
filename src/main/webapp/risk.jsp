@@ -92,11 +92,14 @@
 				<td><input type="text" name="risk_tracker"></td>
 			</tr>
 		</table>
-		<footer>  <input type="submit" value="添加风险条目"
-			class="submit_button"> </footer>
+		<p></p>
+		<footer style="text-align: right;">  <input type="submit" value="添加风险条目"
+			> </footer>
 	</form>
-	<form class="importrisk" action="importRisk" method="post">
-		<input type="submit" value="导入风险条目" class="submit_button">
+	<form class="edit" action="importRisk" method="post">
+	<footer style="	text-align: left;"> 
+		<input type="submit" value="导入风险条目">
+	</footer>
 	</form>
 
 </body>

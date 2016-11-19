@@ -51,8 +51,8 @@
 			<form class="getAllRisk" action="getAllRisk">
 				<input type="submit" value="查询所有风险" class="submit_button"> 
 			</form>
-			<p>${message}</p>
 		</footer>
+		<p>${message}</p>
 		
 </body>
 </html>

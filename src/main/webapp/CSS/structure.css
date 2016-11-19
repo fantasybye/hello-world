@@ -34,13 +34,38 @@ body {
 
 .edit footer {
 	background: #eff4f6;
-	border-top: 1px solid #fff;
-	padding: 12px 26px;
 	overflow: hidden;
-	width: 620px;
+	width:50%;
 	height: 50px;
-	text-align: right;
 	margin: auto;
+	display:inline;
+	float:left;
+}
+
+.edit input[type=submit]{
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 15px;
+	background: #a1d8f0;
+	background: -moz-linear-gradient(top, #badff3, #7acbed);
+	background: -webkit-gradient(linear, left top, left bottom, from(#badff3),
+		to(#7acbed));
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorStr='#badff3', EndColorStr='#7acbed')";
+	border: 1px solid #7db0cc !important;
+	cursor: pointer;
+	font: bold 14px/14px Verdana, Tahomma, Geneva;
+	text-shadow: rgba(0, 0, 0, 0.2) 0 1px 0px;
+	color: #fff;
+	-moz-box-shadow: inset rgba(255, 255, 255, 0.6) 0 1px 1px,
+		rgba(0, 0, 0, 0.1) 0 1px 1px;
+	-webkit-box-shadow: inset rgba(255, 255, 255, 0.6) 0 1px 1px,
+		rgba(0, 0, 0, 0.1) 0 1px 1px;
+	box-shadow: inset rgba(255, 255, 255, 0.6) 0 1px 1px, rgba(0, 0, 0, 0.1)
+		0 1px 1px;
+	margin:10px 10px 10px;
+	padding: 7px 21px;
+	
 }
 
 form {
@@ -138,13 +163,19 @@ table {
 	text-align: center;
 }
 
+.arrangebody p{
+	color:red;
+	font-weight:bold;
+	font-size:20px;
+	margin:10px 0px 10px
+}
+
 .arrangebody footer {
 	background: #eff4f6;
-	border-top: 1px solid #fff;
 	padding: 10px 26px;
 	overflow: hidden;
 	width: 780px;
-	height: 50px;
+	height: 40px;
 	margin: auto;
 	text-align: right;
 	font-family: Microsoft YaHei;
@@ -155,6 +186,7 @@ table {
 	float: left;
 	height: 22px;
 	margin-top: 14px;
+	margin-left:10px;
 }
 
 .footer form {
