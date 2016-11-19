@@ -1,10 +1,13 @@
 package servlet;
 
 import java.util.ArrayList;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import data.handle;
+import data.userLogic;
 import model.User;
 import model.risk;
 
@@ -12,11 +15,25 @@ import model.risk;
 
 public class LoginAction extends ActionSupport{
 
-	//private String message;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private User loginuser;
 	private String username;
 	private String password;
+	private String message;
 	private ArrayList<risk> risklist; 
+	
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
 	public String getUsername() {
 		return username;
@@ -50,59 +67,28 @@ public class LoginAction extends ActionSupport{
 		this.risklist = risklist;
 	}
 
-
-    // 定义处理用户请求的execute方法
 	
 	public String toLogin(){
 		return "success";
 	}
 	
 	public String judgeLogin(){
-		handle h=new handle();
-		int result=h.judgeLogin(username,password);
+		userLogic u=new userLogic();
+		int result=u.judgeLogin(username,password);
 		switch(result){
 			case 0:	
-				loginuser=new User(username);
-				risklist=h.getAllRisk();
-				for(int i=0;i<risklist.size();i++){
-					switch(risklist.get(i).getRiskPossibility()){
-						case 1:
-							risklist.get(i).setRiskPossibilityStr("低");
-							break;
-						case 2:
-							risklist.get(i).setRiskPossibilityStr("中");
-							break;
-						case 3:
-							risklist.get(i).setRiskPossibilityStr("高");
-							break;
-						default:
-							System.out.println("riskPossibility false");
-							break;
-					}
-					
-					switch(risklist.get(i).getRiskEfficiency()){
-						case 1:
-							risklist.get(i).setRiskEfficiencyStr("低");
-							break;
-						case 2:
-							risklist.get(i).setRiskEfficiencyStr("中");
-							break;
-						case 3:
-							risklist.get(i).setRiskEfficiencyStr("高");
-							break;
-						default:
-							System.out.println("riskEfficiencyStr false");
-							break;
-					}
-				}
+				ActionContext actionContext = ActionContext.getContext();			  
+			    Map session = actionContext.getSession();  			  
+			    session.put("username", username);			  
 				return "success";
 			case -1:
-				return "fail";
-			case 1:
+				message="鐢ㄦ埛鍚嶄笉瀛樺湪";
 				return "not found";
-			case 2:
+			case -2:
+				message="瀵嗙爜閿欒";
 				return "wrong";
 			default:
+				message="鐢ㄦ埛鍚嶆垨瀵嗙爜閿欒";
 				return "fail";
 		}
 	} 

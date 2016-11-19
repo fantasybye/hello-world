@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page isELIgnored="false" language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,10 +14,11 @@
 <h1>Sign in to PRM</h1>
 <form class="box login" action = "login" method="post">	
 	<fieldset class="boxBody">
-	  <label>Username</label>
+	  <label>Username</label> 
 	  <input type="text" tabindex="1" placeholder="Username" name="username" required>
 	  <label>Password</label>
 	  <input type="password" tabindex="2" placeholder="Password" name="password" required>
+	  <p>${message}</p>
 	</fieldset>
 	<footer>
 	  <input type="submit" class="btnLogin" value="Login" tabindex="4">

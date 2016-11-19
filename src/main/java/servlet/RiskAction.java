@@ -1,7 +1,10 @@
 package servlet;
 
 import java.util.ArrayList;
+import java.util.Map;
 
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import data.handle;
@@ -84,6 +87,17 @@ public class RiskAction extends ActionSupport{
 	}
 
 	public String getAllRisk(){
+		ActionContext actionContext = ActionContext.getContext();			  
+	    Map session = actionContext.getSession();  			  
+	    String name=(String)session.get("username");		
+	    System.out.println(name);
+		setRiskList();
+		
+		return "success";
+		
+	}
+	
+	private void setRiskList(){
 		handle h=new handle();
 		risklist=h.getAllRisk();
 		for(int i=0;i<risklist.size();i++){
@@ -117,9 +131,6 @@ public class RiskAction extends ActionSupport{
 					break;
 			}
 		}
-		
-		return "success";
-		
 	}
 
 	public String addRisk(){
@@ -148,7 +159,7 @@ public class RiskAction extends ActionSupport{
 		risk r=new risk(1,rname,rcontent,rposvalue,reffvalue,risk_trigger,risk_committer,risk_tracker);
 		result=h.addRisk(r);
 		if(result){
-			getAllRisk();
+			setRiskList();
 			return "success";
 		}
 		else{
