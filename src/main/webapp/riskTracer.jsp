@@ -16,15 +16,15 @@
 		<label>风险名称</label>
 			<textarea type="text" readonly='readonly' tabindex="1" name="riskname" >${riskfollow.riskName}</textarea>
 		<label>风险内容</label>
-			<textarea tabindex="2" readonly='readonly' name="riskcontent" style="height:80px;" >${riskfollow.riskContent}</textarea>
+			<textarea tabindex="2" readonly='readonly' name="riskcontent" style="height:60px;" >${riskfollow.riskContent}</textarea>
 		<label>跟踪描述</label> 
-			<textarea tabindex="3" placeholder="Description" name="description" style="height:240px;">${riskfollow.description}</textarea>
+			<textarea tabindex="3" placeholder="Description" name="description" style="height:150px;">${riskfollow.description}</textarea>
 		<input type="hidden" name="riskfollow_follower" value="${riskfollow.follower}"/> 
-		<p></p>	
 		<br/>	
 	</fieldset>
 	<footer> <input type="submit" value="确认追踪信息"
 			onClick="" class="submit_button"> </footer>
 	</form>
+	<h3 align="center">Tracer records</h3>
 </body>
 </html>
