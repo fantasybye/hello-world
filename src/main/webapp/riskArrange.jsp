@@ -22,6 +22,7 @@
 					</table></td>
 			</tr>
 		</table>
+		<p></p>
 		<footer class="footer"> <label>新建计划名称</label> <input type="text"
 			name="plan_name"> <input type="submit" value="添加风险计划"
 			class="submit_button"> <input type="submit" value="查询所有风险"
