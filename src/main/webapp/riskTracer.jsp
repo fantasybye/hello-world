@@ -11,7 +11,7 @@
 <body>
 	<h3 align="center">Risks tracer</h3>
 	<form class="tracer" action="riskfollowmodify">
-		<table align = 'center'>
+		<table align = 'center' bgcolor="#ffffff">
 			<tr>
 				<td class="firstline" align="left"><label>风险名称</label></td>
 			</tr>

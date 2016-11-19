@@ -57,6 +57,9 @@ table{
 	font-family:Microsoft YaHei;
 }
 
+.radiotd {
+	text-align:left;
+}
 .edit a{
 	display:inline;
 }
@@ -151,6 +154,23 @@ table{
 	width:250px;
 	margin:14px;
 }
+
+.import footer{
+	background:#eff4f6;
+    border-top:1px solid #fff;
+    padding:5px 16px;
+    overflow:hidden;
+    width:800px;
+	height:50px;
+	text-align:right;
+	margin:auto;
+}
+
+.import label,input[type=date],select{
+	float:left;
+	height:22px;
+	margin:14px;
+}
 .box
 {
     background:#fefefe;
@@ -211,7 +231,7 @@ table{
     border-top:1px solid #fff;
     padding:12px 26px;
     overflow:hidden;
-	height:44px;
+	height:54px;
 }
 h1{
 	position:absolute;

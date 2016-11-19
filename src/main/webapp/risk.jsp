@@ -77,13 +77,13 @@
 			</tr>
 			<tr>
 				<td align="center">可能性</td>
-				<td><input type="radio" value="high" name="rpos" checked>高
+				<td class="radiotd"><input type="radio" value="high" name="rpos" checked>高
 					<input type="radio" value="medium" name="rpos">中 <input
 					type="radio" value="low" name="rpos">低</td>
 			</tr>
 			<tr>
 				<td align="center">影响程度</td>
-				<td><input type="radio" value="high" name="reff" checked>高
+				<td class="radiotd"><input type="radio" value="high" name="reff" checked>高
 					<input type="radio" value="medium" name="reff">中 <input
 					type="radio" value="low" name="reff">低</td>
 			</tr>
