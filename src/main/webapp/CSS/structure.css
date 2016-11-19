@@ -61,17 +61,25 @@ body{
 	display:inline;
 }
 
-.tracer{
-	font-family:Microsoft YaHei;
-	width:500px;
-	position:absolute;
-	left:50%;
-	margin:0px 0 0 -250px;
+.firstline{
+	padding-top:20px;
+}
+
+.radio{
+	padding-left:30px;
+}
+
+.tracer form{
+	text-align:center;
 }
 
 .tracer label{
 	display: block;
-    margin: 20px 0 0 15px;
+    margin: 0 0 0 15px;
+}
+
+.tracer input[type=radio]{
+	margin: 10px 5px 10px;
 }
 
 .tracer input[type=text],textarea{
@@ -91,7 +99,7 @@ body{
 .tracer footer{
 	background:#eff4f6;
     border-top:1px solid #fff;
-    padding:0px 26px;
+    padding:10px 26px;
     overflow:hidden;
     width:480px;
 	height:50px;
@@ -99,12 +107,14 @@ body{
 	margin:auto;
 }
 
-.tracer fieldset{
+.tracer table{
 	border: 1px solid #C3D4DB;
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px; 
-    background:#fefefe
+    background:#fefefe;
+    cellspacing:1px;
+	font-family:Microsoft YaHei;
 }
 
 .submit_button{
