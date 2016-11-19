@@ -9,16 +9,17 @@
 </head>
 <body>
 <h3>Risks info</h3>
- 	<form class="import">
+ 	<div class="import">
 <table width='800' border='0' align='center' cellpadding='0'
 		cellspacing='1' bgcolor='#FFFFFF'>
 			<tr>
 				<td width="30%"><label>开始时间</label><input type="date"></td>
 				<td width="30%"><label>结束时间</label><input type="date"></td>
-				<td style="text-align:right;"><input type="submit" class="submit_button" value="查询"></td>
+				<td width="30%" style="text-align:right;"><input type="submit" class="submit_button" value="查询"></td>
+				<td style="text-align:right;"><input type="submit" class="submit_button" value="图表"></td>
 			</tr>
 			<tr>
-				<td colspan="3" bgcolor='#FFFFFF'><table width='100%' border='0'
+				<td colspan="4" bgcolor='#FFFFFF'><table width='100%' border='0'
 						cellpadding='0' cellspacing='1' bgcolor='#B9E3FF'>
 						<tr>
 							<td height='24' align='center' valign='middle' bgcolor='#B9E3FF'><strong>风险名称</strong></td>
@@ -33,6 +34,6 @@
 				</table></td>
 			</tr>
 		</table>
-	</form>
+	</div>
 </body>
 </html>
