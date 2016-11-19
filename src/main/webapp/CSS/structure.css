@@ -179,12 +179,13 @@ table{
 }
 .box.signup
 {
-	height:320px;
+	height:340px;
 	width:332px;
 	position:absolute;
 	left:50%;
 	top:50%;
 	margin:-130px 0 0 -166px;
+	text-align:left;
 }
 .boxBody
 {
@@ -195,13 +196,22 @@ table{
     height:170px;
 }
 
+.boxBody2
+{
+    background:#fefefe;
+    border-top:1px solid #dde0e8;
+    border-bottom:1px solid #dde0e8;
+    padding:10px 20px;
+    height:250px;
+}
+
 .box footer
 {
     background:#eff4f6;
     border-top:1px solid #fff;
     padding:12px 26px;
     overflow:hidden;
-	height:54px;
+	height:44px;
 }
 h1{
 	position:absolute;
