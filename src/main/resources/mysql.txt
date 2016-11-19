@@ -11,20 +11,17 @@ CREATE TABLE risk(
   id int unsigned not null auto_increment primary key,
   riskName varchar(20) not null,
   riskContent varchar(100),
-  createTime datetime not null,
-  riskPossibility int not null,
-  riskEfficiency int not null,
-  riskTrigger varchar(100), 
-  creatorId int not null,
-  riskFollower int
+  createTime date not null,
+  creatorId int not null
 
 );
 CREATE TABLE riskFollow(
   id int unsigned not null auto_increment primary key,
+  projectId int not null,
   riskId int not null,
   followerId int not null,
   description varchar(100),
-  createTime datetime not null,
+  createTime date not null,
   riskPossibility int not null,
   riskEfficiency int not null,
   riskTrigger varchar(100),
@@ -33,12 +30,14 @@ CREATE TABLE riskFollow(
 );
 CREATE TABLE project(
   id int unsigned not null auto_increment primary key,
-  projectName varchar(20) not null
+  projectName varchar(20) not null,
+  creatorId int not null
 
 );
 CREATE TABLE riskToProject(
   id int unsigned not null auto_increment primary key,
   projectId int not null,
-  riskId int not null
+  riskId int not null,
+  putInTime date not null
 
 );

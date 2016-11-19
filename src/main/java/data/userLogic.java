@@ -67,4 +67,39 @@ public class userLogic implements userInterface{
 		return 0;
 	}//添加新用户，0成功，-1用户名已存在，-2密码少于六位
 	
+	public String getUserNameById(int id){
+		String result="";
+		String sql="select * from user where user.id="+id;
+		ConnectMySQL db=new ConnectMySQL(sql);
+		
+		try {  
+			ResultSet ret = db.pst.executeQuery();
+            while (ret.next()) {  
+                result=ret.getString("userName");
+            } 
+            ret.close();  
+            db.close();
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+        } 
+		return result;
+	}//根据用户Id获得用户名
+	
+	public int getUserIdByName(String name){
+		int result=-1;
+		String sql="select * from user where user.userName='"+name+"'";
+		ConnectMySQL db=new ConnectMySQL(sql);
+		
+		try {  
+			ResultSet ret = db.pst.executeQuery();
+            while (ret.next()) {  
+                result=ret.getInt("id");
+            } 
+            ret.close();  
+            db.close();
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+        } 
+		return result;
+	}//根据用户名获得用户Id
 }

@@ -15,10 +15,10 @@ public class projectLogic implements projectInterface{
     	sql="insert into project (projectName,creatorId) values(?,?)";
 		db=new ConnectMySQL(sql);
 		
-		projectLogic p=new projectLogic();
+		userLogic u=new userLogic();
 		try {  
 			db.pst.setString(1, projectName);
-	        db.pst.setInt(2, p.getUserId(creatorName));
+	        db.pst.setInt(2, u.getUserIdByName(creatorName));
 	        db.pst.executeUpdate();
 	        db.close();
         } catch (SQLException e) {  
@@ -40,22 +40,31 @@ public class projectLogic implements projectInterface{
 	}//删除风险管理计划
 	
 	public int modifyProject(project p){
+		sql="update project set projectName="+p.getProjectName()+"' where id="+p.getId();
+		db=new ConnectMySQL(sql);
+		try {
+	        db.pst.executeUpdate();
+            db.close();
+	    } catch (SQLException e) {
+	    	e.printStackTrace();
+	    }
 		return 0;
-	}
+	}//修改风险管理计划
 	
-	public ArrayList<project> getAllProject(int creatorId){
-		return null;
-	}
-	
-	private int getUserId(String name){
-		int result=-1;
-		String sql="select * from user where user.userName='"+name+"'";
-		ConnectMySQL db=new ConnectMySQL(sql);
+	public ArrayList<project> getAllProject(String creatorName){
+		ArrayList<project> result=new ArrayList<project>();
+		userLogic u=new userLogic();
 		
+		sql="select * from project where creatorId="+u.getUserIdByName(creatorName);
+		db=new ConnectMySQL(sql);
 		try {  
-			ResultSet ret = db.pst.executeQuery();
+            ret = db.pst.executeQuery();
             while (ret.next()) {  
-                result=ret.getInt("id");
+                project p=new project();
+                p.setId(ret.getInt(1));
+                p.setProjectName(ret.getString(2));
+                p.setCreatorName(ret.getString(3));
+                result.add(p);
             } 
             ret.close();  
             db.close();
@@ -63,5 +72,6 @@ public class projectLogic implements projectInterface{
             e.printStackTrace();  
         } 
 		return result;
-	}//根据用户名获得用户Id
+	}//获得用户所有风险管理计划
+
 }

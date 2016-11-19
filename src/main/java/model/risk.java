@@ -1,13 +1,16 @@
 package model;
 
+import java.sql.Date;
+
 public class risk {
-	private int id;
-	private String riskName;
-	private String riskContent;
+	private int id;//
+	private String riskName;//风险名
+	private String riskContent;//风险内容
+	private Date createTime;//风险创建时间
 	private int riskPossibility;
 	private int riskEfficiency;
 	private String riskTrigger;
-	private String creatorName;
+	private String creatorName;//风险创建者
 	private String follower;
 	
 	private String riskPossibilityStr;
@@ -116,6 +119,12 @@ public class risk {
 	}
 	public void setRiskEfficiencyStr(String riskEfficiencyStr) {
 		this.riskEfficiencyStr = riskEfficiencyStr;
+	}
+	public Date getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 }
