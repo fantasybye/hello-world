@@ -12,6 +12,27 @@ public class riskLogic implements riskInterface{
 	static String sql = null;  
     static ConnectMySQL db = null;  
     static ResultSet ret = null;
+    
+    public ArrayList<risk> getAllRisk(){
+    	ArrayList<risk> result=new ArrayList<risk>();
+		riskFollowLogic rf=new riskFollowLogic();
+		
+		sql="select * from risk";
+		db=new ConnectMySQL(sql);
+		
+		try {  
+            ret = db.pst.executeQuery();
+            while (ret.next()) {  
+            	risk r=rf.getLatestRiskInfo2(ret.getInt(1));
+                result.add(r);
+            } 
+            ret.close();  
+            db.close();
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+        } 
+		return result;
+    }
 
 	public ArrayList<risk> getExistRisk(int projectId){
 		ArrayList<risk> result=new ArrayList<risk>();
