@@ -8,7 +8,7 @@
 <title>Risk Management Plan</title>
 <link rel="stylesheet" type="text/css" href="CSS/structure.css">
 </head>
-<body>
+<body class="arrangebody">
 	<h3 align="center">Risks Management Plan</h3>
 	<form class="arrange">
 		<table width='800' align="center" cellpadding='0' cellspacing='1' bgcolor='#0099FF'>
