@@ -60,7 +60,7 @@
 	</table>
 	<p></p>
 	<h3 align="center">Manage your risks</h3>
-	<form class="edit" action="addrisk" method="post">
+	<form class="edit" action="addProjectRisk" method="post">
 		<table width='600' align="center">
 			<tr>
 				<td width='150' align="center">风险名称</td>
@@ -88,19 +88,16 @@
 				<td><input type="text" name="risk_trigger"></td>
 			</tr>
 			<tr>
-				<td align="center">提交者</td>
-				<td><input type="text" name="risk_committer"></td>
-			</tr>
-			<tr>
 				<td align="center">跟踪者</td>
 				<td><input type="text" name="risk_tracker"></td>
 			</tr>
 		</table>
-		<footer> <input type="submit" value="导入风险条目"
-			class="submit_button"> <input type="submit" value="添加风险条目"
+		<footer>  <input type="submit" value="添加风险条目"
 			class="submit_button"> </footer>
 	</form>
-
+	<form class="importrisk" action="importRisk" method="post">
+		<input type="submit" value="导入风险条目" class="submit_button">
+	</form>
 
 </body>
 
