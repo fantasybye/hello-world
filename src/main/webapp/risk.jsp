@@ -86,6 +86,7 @@
 			</tr>
 		</table>
 		<footer> 
+			<input type="submit" value="导入风险条目" class="submit_button">
 			<input type="submit" value="添加风险条目" class="submit_button"> 
 		</footer>
 	</form>
