@@ -13,13 +13,13 @@ public class ConnectMySQL {
   
     public ConnectMySQL(String sql) {  
         try {  
-            Class.forName(name);//指定连接类型  
-            conn = DriverManager.getConnection(url, user, password);//获取连接  
-            pst = conn.prepareStatement(sql);//准备执行语句  
+            Class.forName(name);
+            conn = DriverManager.getConnection(url, user, password);
+            pst = conn.prepareStatement(sql);
         } catch (Exception e) {  
             e.printStackTrace();  
         }  
-    }  
+    }  //寤虹珛杩炴帴
   
     public void close() {  
         try {  
@@ -28,5 +28,5 @@ public class ConnectMySQL {
         } catch (SQLException e) {  
             e.printStackTrace();  
         }  
-    }  
+    }  //鍏抽棴杩炴帴
 }

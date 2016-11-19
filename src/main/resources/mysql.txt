@@ -1,4 +1,4 @@
-CREATE DATABASE PRM;
+CREATE DATABASE PRM character set gbk;
 USE PRM;
 CREATE TABLE user(
   id int unsigned not null auto_increment primary key,
@@ -11,6 +11,7 @@ CREATE TABLE risk(
   id int unsigned not null auto_increment primary key,
   riskName varchar(20) not null,
   riskContent varchar(100),
+  createTime datetime not null,
   riskPossibility int not null,
   riskEfficiency int not null,
   riskTrigger varchar(100), 
@@ -22,9 +23,22 @@ CREATE TABLE riskFollow(
   id int unsigned not null auto_increment primary key,
   riskId int not null,
   followerId int not null,
-  description varchar(100)
+  description varchar(100),
+  createTime datetime not null,
+  riskPossibility int not null,
+  riskEfficiency int not null,
+  riskTrigger varchar(100),
+  problem boolean not null
 
 );
-alter table user convert to character set gbk;
-alter table risk convert to character set gbk;
-alter table riskFollow convert to character set gbk;
+CREATE TABLE project(
+  id int unsigned not null auto_increment primary key,
+  projectName varchar(20) not null
+
+);
+CREATE TABLE riskToProject(
+  id int unsigned not null auto_increment primary key,
+  projectId int not null,
+  riskId int not null
+
+);
