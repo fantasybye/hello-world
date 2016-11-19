@@ -24,7 +24,7 @@
             },
             tooltip: {},
             legend: {
-                data:['销量'],
+                data:['数量'],
                 show:false
             },
             xAxis: {
@@ -35,7 +35,7 @@
             	name: '数量'
             },
             series: [{
-                name: '销量',
+                name: '数量',
                 type: 'bar',
                 data: [5, 20, 36, 10, 10, 20]               
             }],
@@ -57,7 +57,7 @@
             },
             tooltip: {},
             legend: {
-                data:['销量'],	
+                data:['数量'],	
             	show:false
             },
             xAxis: {
@@ -68,7 +68,7 @@
             	name: '数量'
             },
             series: [{
-                name: '销量',
+                name: '数量',
                 type: 'bar',
                 data: [5, 20, 36, 10, 10, 20]
             }],
