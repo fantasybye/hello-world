@@ -28,24 +28,20 @@
         	<result name="success">/riskArrange.jsp</result>
         </action>
         
-        
-        <action name="showrisk" class="servlet.RiskAction" method="getAllRisk">
+        <action name="projectDetail" class="servlet.ProjectAction" method="getProjectRisk">
         	<result name="success">/risk.jsp</result>
         </action>
         
-        <action name="addrisk" class="servlet.RiskAction" method="addRisk">
-        	<result type="chain" name="success">showrisk</result>
+        
+        <action name="getAllRisk" class="servlet.RiskAction" method="getAllRisk">
+        	<result name="success">/showAllRisks.jsp</result>
         </action>
         
-        <action name="riskfollow" class="servlet.RiskFollowAction" method="getRiskFollow">
-        	<result name="success">/riskTracer.jsp</result>
-        	<result type="chain" name="fail">showrisk</result>
+        <action name="addProject" class="servlet.RiskArrangeAction" method="addProject">
+        	<result type="chain" name="success">/riskArrange.jsp</result>
+        	<result type="chain" name="fail">/riskArrange.jsp</result>
         </action>
-        
-        <action name="riskfollowmodify" class="servlet.RiskFollowAction" method="modifyRiskFollow">
-        	<result type="chain" name="success">showrisk</result>
-        	<result type="chain" name="fail">riskfollow</result>
-        </action>
+
     </package>
 
     <!-- Add packages here -->

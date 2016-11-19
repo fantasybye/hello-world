@@ -13,14 +13,14 @@
 <body>
 <h1>Sign up to PRM</h1>
 <form class="box signup" action = "register">	
-	<fieldset class="boxBody">
+	<fieldset class="boxBody2">
 	  <label>Username</label>
 	  <input type="text" tabindex="1" placeholder="Username" name="rusername" required>
 	  <label>Password</label>
 	  <input type="password" tabindex="2" placeholder="Password"  name="rpassword" required>
 	  <label>Comfirm Password</label>
 	  <input type="password" tabindex="3" placeholder="Password again" name="crpassword" required>
-		<p>${message}</p>
+		<p style="color:red">${message}</p>
 	</fieldset>
 	<footer>
 	  <input type="submit" class="btnLogin" value="Sign up" tabindex="4">

@@ -1,9 +1,12 @@
 package servlet;
 
 import java.util.ArrayList;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import data.handle;
+import data.userLogic;
 import model.User;
 import model.risk;
 
@@ -75,16 +78,18 @@ public class UserAddAction extends ActionSupport{
 	}
 
 	public String addUser(){
-		handle h=new handle();
+		userLogic u=new userLogic();
 		if(!rpassword.equals(crpassword)){
+			message="两次密码不同";
 			return "fail";
 		}
-		int result=h.addUser(rusername, rpassword, true);
+		int result=u.addUser(rusername, rpassword, true);
 		
 		switch(result){
 			case 0:
-				loginuser=new User(rusername);
-				risklist=h.getAllRisk();
+				ActionContext actionContext = ActionContext.getContext();			  
+			    Map session = actionContext.getSession();  			  
+			    session.put("username", rusername);			  
 				return "success";
 			case -1:
 				message="用户名已存在";
