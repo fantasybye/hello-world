@@ -166,10 +166,15 @@ table{
 	margin:auto;
 }
 
+.import input[type=submit]{
+	margin: 5px 10px 5px;
+	padding:5px,20px;
+}
+
 .import label,input[type=date],select{
 	float:left;
 	height:22px;
-	margin:14px;
+	margin-left:10px;
 }
 .box
 {
