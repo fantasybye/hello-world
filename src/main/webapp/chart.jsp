@@ -9,15 +9,6 @@
 <title>Risk Chart</title>
 </head>
 <body>
-	<s:iterator id="recdata" value="recognized" >
-   		 <s:property value="#recdata.riskName"/>
-   		 <s:property value="#recdata.num" />
-	</s:iterator>
-	
-	<s:iterator id="topdata" value="toProblem" >
-   		 <s:property value="#topdata.riskName"/>
-   		 <s:property value="#topdata.num" />
-	</s:iterator>
 	<form class="chart">
 	<div id="mostpro" style="width: 50%;height:400px;float:left"></div>
 	<div id="mostide" style="width: 50%;height:400px;float:left"></div>
@@ -25,26 +16,19 @@
 	<script type="text/javascript" src="echarts.common.min.js"></script>
 	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
     <script type="text/javascript">  
-    	var recnamelist = new Array();
-    	var recnumlist = new Array();
-    	var topnamelist = new Array();
-    	var topnumlist = new Array();
-	    $(function() {	
-	        $.each($('s\\:property '), function(i, o) {
-	        	recnamelist[i]=($(o).attr('value'));
-	        	alert(recnamelist[i]);
-	        });
-	        $.each($('#recdata #rrnum'), function(i, o) {
-	        	recnumlist[i]=($(o).attr('value'));
-	        });
-	        $.each($('#topdata #prname'), function(i, o) {
-	        	topnamelist[i]=($(o).attr('value'));
-	        });
-	        $.each($('#topdata #prnum'), function(i, o) {
-	        	topnumlist[i]=($(o).attr('value'));
-	        });
-	    });
-        // 基于准备好的dom，初始化echarts实例
+    	var recnamelist = [<s:iterator id="recdata" value="recognized" >
+  		 	'<s:property value="#recdata.riskName"/>',
+  		</s:iterator>];
+    	var recnumlist = [<s:iterator id="recdata" value="recognized" >
+  			'<s:property value="#recdata.num" />',
+  		</s:iterator>];
+    	var topnamelist = [<s:iterator id="topdata" value="toProblem" >
+    		' <s:property value="#topdata.riskName" />',
+    	</s:iterator>];
+    	var topnumlist = [<s:iterator id="topdata" value="toProblem" >
+    		' <s:property value="#topdata.num" />',
+    	</s:iterator>];
+	    // 基于准备好的dom，初始化echarts实例
         var mostproChart = echarts.init(document.getElementById('mostpro'));
 
         // 指定图表的配置项和数据
