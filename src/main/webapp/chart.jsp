@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page isELIgnored="false" language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="model.*,java.util.*"%>
+ <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script type="text/javascript" src="echarts.common.min.js"></script>
 <link rel="stylesheet" type="text/css" href="CSS/structure.css">
 <title>Risk Chart</title>
 </head>
@@ -12,7 +12,36 @@
 	<form class="chart">
 	<div id="mostpro" style="width: 50%;height:400px;float:left"></div>
 	<div id="mostide" style="width: 50%;height:400px;float:left"></div>
-    <script type="text/javascript">
+	<s:iterator id="recdata" value="recognized" >
+   		 <td id="rrname"><s:property value="#recdata.riskName"/></td>
+   		 <td id="rrnum"><s:property value="#recdata.num" /></td>
+	</s:iterator>
+	
+	<s:iterator id="topdata" value="toProblem" >
+   		 <td id="prname"><s:property value="#topdata.riskName"/></td>
+   		 <td id="prnum"><s:property  value="#topdata.num" /></td>
+	</s:iterator>
+	<script type="text/javascript" src="echarts.common.min.js"></script>
+	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">  
+    	var recnamelist = new Array();
+    	var recnumlist = new Array();
+    	var topnamelist = new Array();
+    	var topnumlist = new Array();
+	    $(function() {	    	
+	        $.each($('#recdata #rrname'), function(i, o) {
+	        	recnamelist[i]=($(o).attr('value'));
+	        });
+	        $.each($('#recdata #rrnum'), function(i, o) {
+	        	recnumlist[i]=($(o).attr('value'));
+	        });
+	        $.each($('#topdata #prname'), function(i, o) {
+	        	topnamelist[i]=($(o).attr('value'));
+	        });
+	        $.each($('#topdata #prnum'), function(i, o) {
+	        	topnumlist[i]=($(o).attr('value'));
+	        });
+	    });
         // 基于准备好的dom，初始化echarts实例
         var mostproChart = echarts.init(document.getElementById('mostpro'));
 
@@ -28,7 +57,7 @@
                 show:false
             },
             xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+                data: topnamelist,
             	name: '风险名称'
             },
             yAxis: {
@@ -37,7 +66,7 @@
             series: [{
                 name: '数量',
                 type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]               
+                data: topnumlist               
             }],
             color: ['#b0e0e6']
         };
@@ -61,7 +90,7 @@
             	show:false
             },
             xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+                data: recnamelist,
             	name: '风险名称'
             },
             yAxis: {
@@ -70,7 +99,7 @@
             series: [{
                 name: '数量',
                 type: 'bar',
-                data: [5, 20, 36, 10, 10, 20]
+                data: recnumlist
             }],
         };
 
