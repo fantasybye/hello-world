@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.risk;
+import model.riskFollow;
 import model.riskNum;
 
 public class riskLogic implements riskInterface{
@@ -201,12 +202,13 @@ public class riskLogic implements riskInterface{
 	    } catch (SQLException e) {
 	    	e.printStackTrace(); 
 	    }
-		sql="insert into riskFollow (projectId,riskId,followerId,createTime,riskPossibility,riskEfficiency,riskTrigger,problem) values (?,?,?,?,?,?,?,?)";
+		sql="insert into riskFollow (projectId,riskId,followerId,description,createTime,riskPossibility,riskEfficiency,riskTrigger,problem) values (?,?,?,?,?,?,?,?,?)";
 		db=new ConnectMySQL(sql);
 		try {
 	        db.pst.setInt(1, projectId);
 	        db.pst.setInt(2, rl.getRiskIdByName(r.getRiskName()));
 	        db.pst.setInt(3, u.getUserIdByName(r.getFollower()));
+	        db.pst.setString(4, "初次创建");
 	        db.pst.setDate(4, r.getCreateTime());
 	        db.pst.setInt(5, r.getRiskPossibility());
 	        db.pst.setInt(6, r.getRiskEfficiency());
@@ -233,6 +235,8 @@ public class riskLogic implements riskInterface{
 	}
 		
 	public int putInRisk(ArrayList<Integer> r,int projectId,Date time){
+		userLogic u=new userLogic();
+		riskLogic rl=new riskLogic();
 		for(int i=0;i<r.size();i++){
 			sql="insert into riskToProject (projectId,riskId,putInTime) values (?,?,?)";
 			db=new ConnectMySQL(sql);
@@ -244,6 +248,45 @@ public class riskLogic implements riskInterface{
 		        db.close();
 		    } catch (SQLException e) {
 		    	e.printStackTrace(); 
+		    }
+			riskFollow f=new riskFollow();
+			sql="select * from riskFollow where riskId="+r.get(i)+" order by createTime desc limit 1";
+			db=new ConnectMySQL(sql);
+			try {  
+	            ret = db.pst.executeQuery();
+	            while (ret.next()) {  
+	                f.setId(ret.getInt(1)); 
+	                f.setProjectId(projectId);
+	                f.setRiskName(rl.getRiskNameById(ret.getInt(3)));
+	                f.setFollower(u.getUserNameById(ret.getInt(4)));
+	                f.setDescription(ret.getString(5));
+	                f.setCreateTime(time);
+	                f.setRiskPossibility(ret.getInt(7));
+	                f.setRiskEfficiency(ret.getInt(8));
+	                f.setRiskTrigger(ret.getString(9));
+	                f.setProblem(ret.getBoolean(10));
+	            } 
+	            ret.close();  
+	            db.close();
+	        } catch (SQLException e) {  
+	            e.printStackTrace();  
+	        } 
+			sql="insert into riskFollow (projectId,riskId,followerId,description,createTime,riskPossibility,riskEfficiency,riskTrigger,problem) values(?,?,?,?,?,?,?,?,?)";
+			db=new ConnectMySQL(sql);
+			try {
+		        db.pst.setInt(1, f.getProjectId());
+		        db.pst.setInt(2, rl.getRiskIdByName(f.getRiskName()));
+		        db.pst.setInt(3, u.getUserIdByName(f.getFollower()));
+		        db.pst.setString(4, f.getDescription());
+		        db.pst.setDate(5, f.getCreateTime());
+		        db.pst.setInt(6, f.getRiskPossibility());
+		        db.pst.setInt(7, f.getRiskEfficiency());
+		        db.pst.setString(8, f.getRiskTrigger());
+		        db.pst.setBoolean(9, f.isProblem());
+		        db.pst.executeUpdate();
+		        db.close();
+		    } catch (SQLException e) {
+		    	e.printStackTrace();
 		    }
 		}
 		return 0;
