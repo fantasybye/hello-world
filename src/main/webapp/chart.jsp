@@ -9,18 +9,19 @@
 <title>Risk Chart</title>
 </head>
 <body>
-	<form class="chart">
-	<div id="mostpro" style="width: 50%;height:400px;float:left"></div>
-	<div id="mostide" style="width: 50%;height:400px;float:left"></div>
 	<s:iterator id="recdata" value="recognized" >
-   		 <td id="rrname"><s:property value="#recdata.riskName"/></td>
-   		 <td id="rrnum"><s:property value="#recdata.num" /></td>
+   		 <s:property value="#recdata.riskName"/>
+   		 <s:property value="#recdata.num" />
 	</s:iterator>
 	
 	<s:iterator id="topdata" value="toProblem" >
-   		 <td id="prname"><s:property value="#topdata.riskName"/></td>
-   		 <td id="prnum"><s:property  value="#topdata.num" /></td>
+   		 <s:property value="#topdata.riskName"/>
+   		 <s:property value="#topdata.num" />
 	</s:iterator>
+	<form class="chart">
+	<div id="mostpro" style="width: 50%;height:400px;float:left"></div>
+	<div id="mostide" style="width: 50%;height:400px;float:left"></div>
+	
 	<script type="text/javascript" src="echarts.common.min.js"></script>
 	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
     <script type="text/javascript">  
@@ -28,9 +29,10 @@
     	var recnumlist = new Array();
     	var topnamelist = new Array();
     	var topnumlist = new Array();
-	    $(function() {	    	
-	        $.each($('#recdata #rrname'), function(i, o) {
+	    $(function() {	
+	        $.each($('s\\:property '), function(i, o) {
 	        	recnamelist[i]=($(o).attr('value'));
+	        	alert(recnamelist[i]);
 	        });
 	        $.each($('#recdata #rrnum'), function(i, o) {
 	        	recnumlist[i]=($(o).attr('value'));
@@ -57,7 +59,7 @@
                 show:false
             },
             xAxis: {
-                data: topnamelist,
+                data: [topnamelist[0],topnamelist[1]],
             	name: '风险名称'
             },
             yAxis: {
@@ -66,7 +68,7 @@
             series: [{
                 name: '数量',
                 type: 'bar',
-                data: topnumlist               
+                data: [topnumlist[0],topnumlist[1]]               
             }],
             color: ['#b0e0e6']
         };

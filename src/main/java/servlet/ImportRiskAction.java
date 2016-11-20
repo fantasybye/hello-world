@@ -96,7 +96,6 @@ public class ImportRiskAction extends ActionSupport{
 	    int projectid=(Integer)session.get("projectid");
 	    
 	    java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
-	    
 	    if(checkedValue.length==0){
 	    	return "fail";
 	    }

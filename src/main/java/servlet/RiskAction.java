@@ -265,7 +265,7 @@ public class RiskAction extends ActionSupport{
 	
 	public String riskSearch(){
 		riskLogic r=new riskLogic();
-		risklist=r.getAllRisk(startTime, endTime);System.out.println(risklist.size());
+		risklist=r.getAllRisk(startTime, endTime);
 		setRiskList();
 		return "success";
 	}
