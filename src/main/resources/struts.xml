@@ -41,11 +41,7 @@
         	<result name="success">/risk.jsp</result>
         </action>
         
-        <action name="getAllRisk" class="servlet.RiskAction" method="getAllRisk">
-        	<result name="success">/showAllRisks.jsp</result>
-        </action>
-        
-        <action name="addProjectRisk" class="servlet.RiskAction" method="getProjectRisk">
+        <action name="addProjectRisk" class="servlet.RiskAction" method="addProjectRisk">
         	<result type="chain" name="success">projectDetail</result>
         </action>
         
@@ -57,6 +53,26 @@
         	<result name="success">/import.jsp</result>
         </action>
         
+        <action name="importRiskId" class="servlet.ImportRiskAction" method="importRiskId">
+        	<result type="chain" name="success">projectDetail</result>
+        	<result type="chain" name="fail">projectDetail</result>
+        </action>
+        
+        <action name="riskdel" class="servlet.RiskAction" method="delProjectRisk">
+        	<result type="chain" name="success">projectDetail</result>
+        </action>
+        
+        <action name="riskfollow" class="servlet.RiskFollowAction" method="getRiskFollow">
+        	<result name="success">/riskTracer.jsp</result>
+        </action>
+        
+        <action name="riskfollowadd" class="servlet.RiskFollowAction" method="addRiskFollow">
+        	<result type="chain" name="success">riskfollow</result>
+        </action>
+                
+        <action name="getAllRisk" class="servlet.RiskAction" method="getAllRisk">
+        	<result name="success">/showAllRisks.jsp</result>
+        </action>
 
     </package>
 

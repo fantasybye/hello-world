@@ -59,6 +59,8 @@ public class ProjectAction extends ActionSupport{
 		return "success";
 	}
 	
+	
+	
 	private void setRiskList(){
 		for(int i=0;i<risklist.size();i++){
 			switch(risklist.get(i).getRiskPossibility()){

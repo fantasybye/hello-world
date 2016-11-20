@@ -21,17 +21,21 @@ public class RiskFollowAction extends ActionSupport{
 	
 	private String riskname;
 	private String riskcontent;
+	private String risktrigger;
+	private String rpos;
+	private String reff;
+	private String ishap;
 	private String description;
-	private int riskfollow_id;
-	private String riskfollow_follower;
 	
-	private riskFollow riskfollow;
+	private risk risk;
 	
-	public riskFollow getRiskfollow() {
-		return riskfollow;
+	private ArrayList<riskFollow> riskfollowlist;
+	
+	public risk getRisk() {
+		return risk;
 	}
-	public void setRiskfollow(riskFollow riskfollow) {
-		this.riskfollow = riskfollow;
+	public void setRiskfollow(risk risk) {
+		this.risk = risk;
 	}
 	public int getSelectedriskid() {
 		return selectedriskid;
@@ -59,20 +63,37 @@ public class RiskFollowAction extends ActionSupport{
 		this.description = description;
 	}
 	
+	public String getRisktrigger() {
+		return risktrigger;
+	}
+	public void setRisktrigger(String risktrigger) {
+		this.risktrigger = risktrigger;
+	}
+	public String getRpos() {
+		return rpos;
+	}
+	public void setRpos(String rpos) {
+		this.rpos = rpos;
+	}
+	public String getReff() {
+		return reff;
+	}
+	public void setReff(String reff) {
+		this.reff = reff;
+	}
+	public String getIshap() {
+		return ishap;
+	}
+	public void setIshap(String ishap) {
+		this.ishap = ishap;
+	}
+	public ArrayList<riskFollow> getRiskfollowlist() {
+		return riskfollowlist;
+	}
+	public void setRiskfollowlist(ArrayList<riskFollow> riskfollowlist) {
+		this.riskfollowlist = riskfollowlist;
+	}
 	
-	public int getRiskfollow_id() {
-		return riskfollow_id;
-	}
-	public void setRiskfollow_id(int riskfollow_id) {
-		this.riskfollow_id = riskfollow_id;
-	}
-	
-	public String getRiskfollow_follower() {
-		return riskfollow_follower;
-	}
-	public void setRiskfollow_follower(String riskfollow_follower) {
-		this.riskfollow_follower = riskfollow_follower;
-	}
 	
 	public String getRiskFollow(){
 		ActionContext actionContext = ActionContext.getContext();			  
@@ -80,17 +101,56 @@ public class RiskFollowAction extends ActionSupport{
 	    int projectid=(Integer)session.get("projectid");	
 		
 		riskFollowLogic rf=new riskFollowLogic();
-		riskLogic r=new riskLogic();
-		risk risk=rf.getLatestRiskInfo2(selectedriskid);
-		ArrayList <riskFollow> result=rf.getRiskFollow(projectid,selectedriskid);
-		if(result.size()==0){
-			return "fail";
+		if(selectedriskid>0){
+			risk=rf.getLatestRiskInfo2(selectedriskid);
+			riskfollowlist=rf.getRiskFollow(projectid,selectedriskid);
+			session.put("riskid",selectedriskid);
+		}else{
+			int riskid=(Integer)session.get("riskid");
+			risk=rf.getLatestRiskInfo2(riskid);
+			riskfollowlist=rf.getRiskFollow(projectid,riskid);
 		}
-		else{
-			riskfollow=result.get(0);
-			riskfollow.setRiskContent(risk.getRiskContent());
-			return "success";
+		return "success";
+	}
+	
+	public String addRiskFollow(){
+		ActionContext actionContext = ActionContext.getContext();			  
+	    Map session = actionContext.getSession();  			  
+	    int projectid=(Integer)session.get("projectid");
+	    String creatorName=(String)session.get("username");
+	    
+	    riskFollow riskfollow=new riskFollow();
+	    riskfollow.setCreateTime(new java.sql.Date(System.currentTimeMillis()));
+	    riskfollow.setDescription(description);
+		riskfollow.setFollower(creatorName);
+		if(ishap.equals("ishappneed")){
+			riskfollow.setProblem(true);
+		}else if(ishap.equals("nothappened")){
+			riskfollow.setProblem(false);
 		}
+		riskfollow.setProjectId(projectid);
+		if(rpos.equals("low")){
+			riskfollow.setRiskPossibility(1);
+		}else if(rpos.equals("medium")){
+			riskfollow.setRiskPossibility(2);
+		}else if(rpos.equals("high")){
+			riskfollow.setRiskPossibility(3);
+		}
+		
+		if(reff.equals("low")){
+			riskfollow.setRiskEfficiency(1);
+		}else if(reff.equals("medium")){
+			riskfollow.setRiskEfficiency(2);
+		}else if(reff.equals("high")){
+			riskfollow.setRiskEfficiency(3);
+		}
+		
+		riskfollow.setRiskName(riskname);
+		riskfollow.setRiskTrigger(risktrigger);
+	    
+		riskFollowLogic rf=new riskFollowLogic();
+		int result=rf.addRiskFollow(riskfollow);
+		return "success";
 	}
 	
 //	public String modifyRiskFollow(){

@@ -23,7 +23,8 @@ public class RiskAction extends ActionSupport{
 	private String risk_trigger;
 	private String risk_committer;
 	private String risk_tracker;
-	private int selectedprojectid;
+	//private int selectedprojectid;
+	private int selectedriskid;
 	
 	public ArrayList<risk> getRisklist() {
 		return risklist;
@@ -90,31 +91,37 @@ public class RiskAction extends ActionSupport{
 		this.risk_tracker = risk_tracker;
 	}
 	
+	public int getSelectedriskid() {
+		return selectedriskid;
+	}
+
+	public void setSelectedriskid(int selectedriskid) {
+		this.selectedriskid = selectedriskid;
+	}	
 	
+//
+//	public int getSelectedprojectid() {
+//		return selectedprojectid;
+//	}
+//
+//	public void setSelectedprojectid(int selectedprojectid) {
+//		this.selectedprojectid = selectedprojectid;
+//	}
 
-	public int getSelectedprojectid() {
-		return selectedprojectid;
-	}
-
-	public void setSelectedprojectid(int selectedprojectid) {
-		this.selectedprojectid = selectedprojectid;
-	}
 
 	public String getAllRisk(){
 		ActionContext actionContext = ActionContext.getContext();			  
 	    Map session = actionContext.getSession();  			  
 	    String name=(String)session.get("username");		
-	    System.out.println(name);
-		setRiskList();
-		
+		riskLogic r=new riskLogic();
+		risklist=r.getAllRisk();
+		setRiskList();		
 		return "success";
 		
 	}
 	
 	
 	private void setRiskList(){
-		riskLogic r=new riskLogic();
-		risklist=r.getAllRisk();
 		for(int i=0;i<risklist.size();i++){
 			switch(risklist.get(i).getRiskPossibility()){
 				case 1:
@@ -158,7 +165,7 @@ public class RiskAction extends ActionSupport{
 			rposvalue=1;
 		}else if(rpos.equals("medium")){
 			rposvalue=2;
-		}else if(rpos.equals("hign")){
+		}else if(rpos.equals("high")){
 			rposvalue=3;
 		}
 		
@@ -166,19 +173,33 @@ public class RiskAction extends ActionSupport{
 			reffvalue=1;
 		}else if(reff.equals("medium")){
 			reffvalue=2;
-		}else if(reff.equals("hign")){
+		}else if(reff.equals("high")){
 			reffvalue=3;
 		}
 		ActionContext actionContext = ActionContext.getContext();			  
 	    Map session = actionContext.getSession();  			  
 	    String userName=(String)session.get("username");	
-		risk r=new risk(1,rname,rcontent,rposvalue,reffvalue,risk_trigger,risk_committer,risk_tracker);
+		risk r=new risk(1,rname,rcontent,rposvalue,reffvalue,risk_trigger,userName,risk_tracker);
 		
 		java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 		r.setCreateTime(currentDate);
 		
-		int res=rl.addProjectRisk(r,selectedprojectid);
+		int projectid=(Integer)session.get("projectid");
+		
+		int res=rl.addProjectRisk(r,projectid);		  
+	    risklist=rl.getExistRisk(projectid);		
 		setRiskList();
+		return "success";
+	}
+	
+	public String delProjectRisk(){
+		ActionContext actionContext = ActionContext.getContext();			  
+	    Map session = actionContext.getSession();  			  
+	    int projectid=(Integer)session.get("projectid");
+		
+		riskLogic r=new riskLogic();
+		int result=r.removeProjectRisk(selectedriskid, projectid);
+		
 		return "success";
 	}
 }

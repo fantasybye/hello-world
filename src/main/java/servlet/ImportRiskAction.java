@@ -88,4 +88,24 @@ public class ImportRiskAction extends ActionSupport{
 		
 		return "success";
 	}
+	
+	public String importRiskId(){
+		ActionContext actionContext = ActionContext.getContext();			  
+	    Map session = actionContext.getSession();  			  
+	    int projectid=(Integer)session.get("projectid");
+	    
+	    java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+	    
+	    if(checkedValue.length==0){
+	    	return "fail";
+	    }
+	    
+		ArrayList<Integer> chosed=new ArrayList<Integer>();
+		for(int i=0;i<checkedValue.length;i++){
+			chosed.add(Integer.parseInt(checkedValue[i]));
+		}
+		riskLogic r=new riskLogic();
+		r.putInRisk(chosed, projectid, currentDate);
+		return "success";
+	}
 }

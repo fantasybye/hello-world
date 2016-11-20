@@ -1,6 +1,6 @@
-<%@ page isELIgnored="false" language="java"
-	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ page isELIgnored="false" language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="model.*,java.util.*"%>
+ <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,22 +10,21 @@
 </head>
 <body>
 	<h3 align="center">Risks tracer</h3>
-	<form class="tracer" action="riskfollowmodify">
+	<form class="tracer" action="riskfollowadd">
 		<table align = 'center' bgcolor="#ffffff">
 			<tr>
 				<td class="firstline" align="left"><label>风险名称</label></td>
 			</tr>
 			<tr>
-				<td align="center"><input type="hidden" name="riskfollow_id"
-					value="${riskfollow.id}" /> <textarea readonly='readonly'
-						tabindex="1" name="riskname">${riskfollow.riskName}</textarea></td>
+				<td align="center"><textarea readonly='readonly'
+						tabindex="1" name="riskname">${risk.riskName}</textarea></td>
 			</tr>
 			<tr>
 				<td align="left"><label>风险内容</label></td>
 			</tr>
 			<tr>
 				<td align="center"><textarea tabindex="2" readonly='readonly'
-						name="riskcontent" style="height: 60px;">${riskfollow.riskContent}</textarea>
+						name="riskcontent" style="height: 60px;">${risk.riskContent}</textarea>
 				</td>
 			</tr>
 			<tr>
@@ -70,9 +69,7 @@
 			<tr>
 				<td align="center"><textarea tabindex="3"
 						placeholder="Description" name="description"
-						style="height: 150px;">${riskfollow.description}</textarea> <input
-					type="hidden" name="riskfollow_follower"
-					value="${riskfollow.follower}" /> <br /></td>
+						style="height: 150px;"></textarea> <br /></td>
 			</tr>
 		</table>
 		<footer> <input type="submit" value="确认追踪信息" onClick=""
@@ -91,6 +88,22 @@
 						<td align='center' valign='middle' bgcolor='#B9E3FF'><strong>跟踪者</strong></td>
 						<td align='center' valign='middle' bgcolor='#B9E3FF'><strong>跟踪描述</strong></td>
 					</tr>
+					<s:iterator id="riskfollow" value="riskfollowlist" status="st">
+						<tr>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#riskfollow.riskPossibility"></s:property></td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#riskfollow.riskEfficiency"></s:property></td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#riskfollow.riskTrigger"></s:property></td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#riskfollow.problem"></s:property></td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#riskfollow.follower"></s:property></td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#riskfollow.description"></s:property></td>
+						</tr>
+					</s:iterator>
 				</table></td>
 		</tr>
 		</table>
