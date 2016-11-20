@@ -43,7 +43,7 @@
 						</tr>
 						<s:iterator id="risk" value="risklist" status="st">
 							<tr>
-								<td><input type="checkbox" name="checkedValue"
+								<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><input type="checkbox" name="checkedValue"
 									value='<s:property value="#risk.id"></s:property>'></td>
 								<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
 										value="#risk.riskName"></s:property></td>
@@ -72,7 +72,7 @@
 
 	<script>
 		var $thr = $('table tr');
-		var $checkAll = $thr.find('checkAll');
+		var $checkAll = $thr.find('#checkAll');
 		$checkAll.click(function(event) {
 			$thr.find('input').prop('checked', $(this).prop('checked'));
 			if ($(this).prop('checked')) {
