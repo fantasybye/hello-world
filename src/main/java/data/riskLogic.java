@@ -209,11 +209,11 @@ public class riskLogic implements riskInterface{
 	        db.pst.setInt(2, rl.getRiskIdByName(r.getRiskName()));
 	        db.pst.setInt(3, u.getUserIdByName(r.getFollower()));
 	        db.pst.setString(4, "初次创建");
-	        db.pst.setDate(4, r.getCreateTime());
-	        db.pst.setInt(5, r.getRiskPossibility());
-	        db.pst.setInt(6, r.getRiskEfficiency());
-	        db.pst.setString(7, r.getRiskTrigger());
-	        db.pst.setInt(8, 0);
+	        db.pst.setDate(5, r.getCreateTime());
+	        db.pst.setInt(6, r.getRiskPossibility());
+	        db.pst.setInt(7, r.getRiskEfficiency());
+	        db.pst.setString(8, r.getRiskTrigger());
+	        db.pst.setBoolean(9, false);
 	        db.pst.executeUpdate();
 	        db.close();
 	    } catch (SQLException e) {

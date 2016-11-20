@@ -9,14 +9,20 @@
 </head>
 <body>
 <h3>Risks info</h3>
+
  	<div class="import">
 <table width='800' border='0' align='center' cellpadding='0'
 		cellspacing='1' bgcolor='#FFFFFF'>
 			<tr>
-				<td width="30%"><label>开始时间</label><input type="date"></td>
-				<td width="30%"><label>结束时间</label><input type="date"></td>
+			<form action="riskSearch">
+				<td width="30%"><label>开始时间</label><input type="date" id="startTime" name="startTime"></td>
+				<td width="30%"><label>结束时间</label><input type="date" id="endTime" name="endTime"></td>
 				<td width="30%" style="text-align:right;"><input type="submit" class="submit_button" value="查询"></td>
-				<td style="text-align:right;"><input type="submit" class="submit_button" value="图表"></td>
+			</form>
+			<form action="forChart">
+				<input type="hidden" id="hidStart" name="hidStart"><input type="hidden" id="hidEnd" name="hidEnd">
+				<td style="text-align:right;"><input type="submit" class="submit_button" onclick="myFunc()" value="图表"></td>
+			</form>
 			</tr>
 			<tr>
 				<td colspan="4" bgcolor='#FFFFFF'><table width='100%' border='0'
@@ -35,5 +41,11 @@
 			</tr>
 		</table>
 	</div>
+<script>
+function myFunc(){
+	document.getElementById("hidStart").value=document.getElementById("startTime").value;
+	document.getElementById("hidEnd").value=document.getElementById("endTime").value;
+}
+</script>
 </body>
 </html>

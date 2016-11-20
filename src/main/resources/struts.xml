@@ -73,6 +73,14 @@
         <action name="getAllRisk" class="servlet.RiskAction" method="getAllRisk">
         	<result name="success">/showAllRisks.jsp</result>
         </action>
+        
+        <action name="riskSearch" class="servlet.RiskAction" method="riskSearch">
+        	<result name="success">/showAllRisks.jsp</result>
+        </action>
+        
+        <action name="forChart" class="servlet.RiskAction" method="forChart">
+        	<result name="success">/chart.jsp</result>
+        </action>
 
     </package>
 

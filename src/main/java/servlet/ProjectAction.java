@@ -65,13 +65,13 @@ public class ProjectAction extends ActionSupport{
 		for(int i=0;i<risklist.size();i++){
 			switch(risklist.get(i).getRiskPossibility()){
 				case 1:
-					risklist.get(i).setRiskPossibilityStr("ä½Ž");
+					risklist.get(i).setRiskPossibilityStr("µÍ");
 					break;
 				case 2:
-					risklist.get(i).setRiskPossibilityStr("ä¸­");
+					risklist.get(i).setRiskPossibilityStr("ÖÐ");
 					break;
 				case 3:
-					risklist.get(i).setRiskPossibilityStr("é«˜");
+					risklist.get(i).setRiskPossibilityStr("¸ß");
 					break;
 				default:
 					System.out.println("riskPossibility false");
@@ -80,13 +80,13 @@ public class ProjectAction extends ActionSupport{
 			
 			switch(risklist.get(i).getRiskEfficiency()){
 				case 1:
-					risklist.get(i).setRiskEfficiencyStr("ä½Ž");
+					risklist.get(i).setRiskEfficiencyStr("µÍ");
 					break;
 				case 2:
-					risklist.get(i).setRiskEfficiencyStr("ä¸­");
+					risklist.get(i).setRiskEfficiencyStr("ÖÐ");
 					break;
 				case 3:
-					risklist.get(i).setRiskEfficiencyStr("é«˜");
+					risklist.get(i).setRiskEfficiencyStr("¸ß");
 					break;
 				default:
 					System.out.println("riskEfficiencyStr false");

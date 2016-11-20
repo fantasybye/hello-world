@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import data.riskLogic;
 import model.risk;
+import model.riskNum;
 
 public class RiskAction extends ActionSupport{
 	private ArrayList<risk> risklist;
@@ -25,6 +26,14 @@ public class RiskAction extends ActionSupport{
 	private String risk_tracker;
 	//private int selectedprojectid;
 	private int selectedriskid;
+	
+	private Date startTime;
+	private Date endTime;
+	private Date hidStart;
+	private Date hidEnd;
+	
+	ArrayList<riskNum> recognized;
+	ArrayList<riskNum> toProblem;
 	
 	public ArrayList<risk> getRisklist() {
 		return risklist;
@@ -99,6 +108,8 @@ public class RiskAction extends ActionSupport{
 		this.selectedriskid = selectedriskid;
 	}	
 	
+	
+	
 //
 //	public int getSelectedprojectid() {
 //		return selectedprojectid;
@@ -107,6 +118,55 @@ public class RiskAction extends ActionSupport{
 //	public void setSelectedprojectid(int selectedprojectid) {
 //		this.selectedprojectid = selectedprojectid;
 //	}
+
+	public Date getHidStart() {
+		return hidStart;
+	}
+
+	public void setHidStart(Date hidStart) {
+		this.hidStart = hidStart;
+	}
+
+	public Date getHidEnd() {
+		return hidEnd;
+	}
+
+	public void setHidEnd(Date hidEnd) {
+		this.hidEnd = hidEnd;
+	}
+
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+	
+
+	public ArrayList<riskNum> getRecognized() {
+		return recognized;
+	}
+
+	public void setRecognized(ArrayList<riskNum> recognized) {
+		this.recognized = recognized;
+	}
+
+	public ArrayList<riskNum> getToProblem() {
+		return toProblem;
+	}
+
+	public void setToProblem(ArrayList<riskNum> toProblem) {
+		this.toProblem = toProblem;
+	}
 
 
 	public String getAllRisk(){
@@ -125,13 +185,13 @@ public class RiskAction extends ActionSupport{
 		for(int i=0;i<risklist.size();i++){
 			switch(risklist.get(i).getRiskPossibility()){
 				case 1:
-					risklist.get(i).setRiskPossibilityStr("ä½Ž");
+					risklist.get(i).setRiskPossibilityStr("µÍ");
 					break;
 				case 2:
-					risklist.get(i).setRiskPossibilityStr("ä¸­");
+					risklist.get(i).setRiskPossibilityStr("ÖÐ");
 					break;
 				case 3:
-					risklist.get(i).setRiskPossibilityStr("é«˜");
+					risklist.get(i).setRiskPossibilityStr("¸ß");
 					break;
 				default:
 					System.out.println("riskPossibility false");
@@ -140,13 +200,13 @@ public class RiskAction extends ActionSupport{
 			
 			switch(risklist.get(i).getRiskEfficiency()){
 				case 1:
-					risklist.get(i).setRiskEfficiencyStr("ä½Ž");
+					risklist.get(i).setRiskEfficiencyStr("µÍ");
 					break;
 				case 2:
-					risklist.get(i).setRiskEfficiencyStr("ä¸­");
+					risklist.get(i).setRiskEfficiencyStr("ÖÐ");
 					break;
 				case 3:
-					risklist.get(i).setRiskEfficiencyStr("é«˜");
+					risklist.get(i).setRiskEfficiencyStr("¸ß");
 					break;
 				default:
 					System.out.println("riskEfficiencyStr false");
@@ -200,6 +260,20 @@ public class RiskAction extends ActionSupport{
 		riskLogic r=new riskLogic();
 		int result=r.removeProjectRisk(selectedriskid, projectid);
 		
+		return "success";
+	}
+	
+	public String riskSearch(){
+		System.out.println(startTime);
+		System.out.println(endTime);
+		
+		return "success";
+	}
+	
+	public String forChart(){
+		riskLogic r=new riskLogic();
+		recognized=r.getSelectedRisk(startTime, endTime, 1);
+		toProblem=r.getSelectedRisk(startTime, endTime, 2);
 		return "success";
 	}
 }
