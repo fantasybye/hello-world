@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page isELIgnored="false" language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="model.*,java.util.*"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,8 +36,25 @@
 							<td align='center' valign='middle' bgcolor='#B9E3FF'><strong>触发器/阀值</strong></td>
 							<td align='center' valign='middle' bgcolor='#B9E3FF'><strong>提交者</strong></td>
 							<td align='center' valign='middle' bgcolor='#B9E3FF'><strong>跟踪者</strong></td>
-							<td align='center' valign='middle' bgcolor='#B9E3FF'><strong>操作</strong></td>
 						</tr>
+						<s:iterator id="risk" value="risklist" status="st">
+						<tr>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#risk.riskName"></s:property></td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#risk.riskContent"></s:property></td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#risk.riskPossibilityStr"></s:property></td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#risk.riskEfficiencyStr"></s:property></td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#risk.riskTrigger"></s:property></td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#risk.creatorName"></s:property></td>
+							<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
+									value="#risk.follower"></s:property></td>
+						</tr>
+					</s:iterator>
 				</table></td>
 			</tr>
 		</table>

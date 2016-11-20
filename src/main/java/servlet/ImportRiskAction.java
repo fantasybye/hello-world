@@ -65,6 +65,7 @@ public class ImportRiskAction extends ActionSupport{
 		
 		riskLogic r=new riskLogic();
 		risklist=r.getNotExistRisk(projectid);
+		setRiskList();
 		
 		return "success";
 	}
@@ -85,7 +86,7 @@ public class ImportRiskAction extends ActionSupport{
 		
 		riskLogic r=new riskLogic();
 		risklist=r.getSelectedProjectRisk(new java.sql.Date(startTime.getTime()), new java.sql.Date(endTime.getTime()), projectid, typeint);
-		
+		setRiskList();
 		return "success";
 	}
 	
@@ -107,5 +108,39 @@ public class ImportRiskAction extends ActionSupport{
 		riskLogic r=new riskLogic();
 		r.putInRisk(chosed, projectid, currentDate);
 		return "success";
+	}
+	
+	private void setRiskList(){
+		for(int i=0;i<risklist.size();i++){
+			switch(risklist.get(i).getRiskPossibility()){
+				case 1:
+					risklist.get(i).setRiskPossibilityStr("低");
+					break;
+				case 2:
+					risklist.get(i).setRiskPossibilityStr("中");
+					break;
+				case 3:
+					risklist.get(i).setRiskPossibilityStr("高");
+					break;
+				default:
+					System.out.println("riskPossibility false");
+					break;
+			}
+			
+			switch(risklist.get(i).getRiskEfficiency()){
+				case 1:
+					risklist.get(i).setRiskEfficiencyStr("低");
+					break;
+				case 2:
+					risklist.get(i).setRiskEfficiencyStr("中");
+					break;
+				case 3:
+					risklist.get(i).setRiskEfficiencyStr("高");
+					break;
+				default:
+					System.out.println("riskEfficiencyStr false");
+					break;
+			}
+		}
 	}
 }

@@ -264,16 +264,18 @@ public class RiskAction extends ActionSupport{
 	}
 	
 	public String riskSearch(){
-		System.out.println(startTime);
-		System.out.println(endTime);
-		
+		riskLogic r=new riskLogic();
+		risklist=r.getAllRisk(startTime, endTime);System.out.println(risklist.size());
+		setRiskList();
 		return "success";
 	}
 	
 	public String forChart(){
 		riskLogic r=new riskLogic();
-		recognized=r.getSelectedRisk(startTime, endTime, 1);
-		toProblem=r.getSelectedRisk(startTime, endTime, 2);
+		recognized=r.getSelectedRisk(hidStart, hidEnd, 1);
+		toProblem=r.getSelectedRisk(hidStart, hidEnd, 2);
+		System.out.println(recognized.size());
+		System.out.println(toProblem.size());
 		return "success";
 	}
 }

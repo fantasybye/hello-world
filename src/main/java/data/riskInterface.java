@@ -7,6 +7,7 @@ import model.risk;
 import model.riskNum;
 
 public interface riskInterface {
+	public ArrayList<risk> getAllRisk(Date beginTime,Date endTime);//获得特定时间内的风险
 	public ArrayList<risk> getAllRisk();//获得所有风险
 	public ArrayList<risk> getExistRisk(int projectId);//获得已有风险
 	public ArrayList<risk> getNotExistRisk(int projectId);//获得未有风险

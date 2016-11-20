@@ -14,6 +14,26 @@ public class riskLogic implements riskInterface{
     static ConnectMySQL db = null;  
     static ResultSet ret = null;
     
+    public ArrayList<risk> getAllRisk(Date beginTime,Date endTime){
+    	ArrayList<risk> result=new ArrayList<risk>();
+		riskFollowLogic rf=new riskFollowLogic();
+		
+		sql="select distinct riskId from riskFollow where createTime>='"+beginTime+"' and createTime<='"+endTime+"'";
+		db=new ConnectMySQL(sql);
+		try {  
+            ret = db.pst.executeQuery();
+            while (ret.next()) { 
+            	risk r=rf.getLatestRiskInfo2(ret.getInt(1));
+                result.add(r);
+            } 
+            ret.close();  
+            db.close();
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+        }  
+		return result;
+    }
+    
     public ArrayList<risk> getAllRisk(){
     	ArrayList<risk> result=new ArrayList<risk>();
 		riskFollowLogic rf=new riskFollowLogic();
@@ -82,7 +102,7 @@ public class riskLogic implements riskInterface{
 		ArrayList<risk> result=new ArrayList<risk>();
 		riskFollowLogic rf=new riskFollowLogic();
 		if(type==0){
-			sql="select distinct riskId from riskFollow where projectId<>"+projectId+" and createTime>"+beginTime+" and createTime<"+endTime;
+			sql="select distinct riskId from riskFollow where projectId<>"+projectId+" and createTime>='"+beginTime+"' and createTime<='"+endTime+"'";
 			db=new ConnectMySQL(sql);
 			
 			try {  
@@ -98,7 +118,7 @@ public class riskLogic implements riskInterface{
 	        } 
 			return result;
 		}else if(type==1){
-			sql="select riskId,count(riskId) as c from riskToProject where projectId<>"+projectId+" and createTime>"+beginTime+" and createTime<"+endTime+" group by riskId order by c desc";
+			sql="select riskId,count(riskId) as c from riskToProject where projectId<>"+projectId+" and putInTime>='"+beginTime+"' and putInTime<='"+endTime+"' group by riskId order by c desc";
 			db=new ConnectMySQL(sql);
 			
 			try {  
@@ -114,7 +134,7 @@ public class riskLogic implements riskInterface{
 	        } 
 			return result;
 		}else if(type==2){
-			sql="select riskId,count(riskId) as c from riskFollow where projectId<>"+projectId+" and createTime>"+beginTime+" and createTime<"+endTime+" and problem=1 group by riskId order by c desc";
+			sql="select riskId,count(riskId) as c from riskFollow where projectId<>"+projectId+" and createTime>='"+beginTime+"' and createTime<='"+endTime+"' and problem=1 group by riskId order by c desc";
 			db=new ConnectMySQL(sql);
 			
 			try {  
@@ -137,8 +157,8 @@ public class riskLogic implements riskInterface{
 		ArrayList<riskNum> result=new ArrayList<riskNum>();
 		riskLogic r=new riskLogic();
 		if(type==1){
-			sql="select riskId,count(riskId) as c from riskToProject where createTime>"+beginTime+" and createTime<"+endTime+" group by riskId order by c desc";
-			db=new ConnectMySQL(sql);
+			sql="select riskId,count(riskId) as c from riskToProject where putInTime>='"+beginTime+"' and putInTime<='"+endTime+"' group by riskId order by c desc";
+			db=new ConnectMySQL(sql);System.out.println(sql);
 			
 			try {  
 	            ret = db.pst.executeQuery();
@@ -152,10 +172,10 @@ public class riskLogic implements riskInterface{
 	            db.close();
 	        } catch (SQLException e) {  
 	            e.printStackTrace();  
-	        } 
+	        } System.out.println(result.size());
 			return result;
 		}else if(type==2){
-			sql="select riskId,count(riskId) as c from riskFollow where createTime>"+beginTime+" and createTime<"+endTime+" and problem=1 group by riskId order by c desc";
+			sql="select riskId,count(riskId) as c from riskFollow where createTime>='"+beginTime+"' and createTime<='"+endTime+"' and problem=1 group by riskId order by c desc";
 			db=new ConnectMySQL(sql);
 			
 			try {  
