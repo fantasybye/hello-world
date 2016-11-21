@@ -17,6 +17,8 @@ public class LoginAction extends ActionSupport{
 	/**
 	 * 
 	 */
+	
+	//justtest
 	private static final long serialVersionUID = 1L;
 	
 	private User loginuser;
