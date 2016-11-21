@@ -50,9 +50,9 @@
 								<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
 										value="#risk.riskContent"></s:property></td>
 								<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
-										value="#risk.riskPossibilityStr"></s:property></td>
+										value="#risk.riskPossibility"></s:property></td>
 								<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
-										value="#risk.riskEfficiencyStr"></s:property></td>
+										value="#risk.riskEfficiency"></s:property></td>
 								<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
 										value="#risk.riskTrigger"></s:property></td>
 								<td height='20' align='center' valign='middle' bgcolor='#FFFFFF'><s:property
