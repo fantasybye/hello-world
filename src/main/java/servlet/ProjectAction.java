@@ -12,6 +12,7 @@ import model.risk;
 
 public class ProjectAction extends ActionSupport{
 	
+	//p
 	private int selectedprojectid;
 	private ArrayList<risk> risklist;
 	private String plan_name;
@@ -65,13 +66,13 @@ public class ProjectAction extends ActionSupport{
 		for(int i=0;i<risklist.size();i++){
 			switch(risklist.get(i).getRiskPossibility()){
 				case 1:
-					risklist.get(i).setRiskPossibilityStr("µÍ");
+					risklist.get(i).setRiskPossibilityStr("ï¿½ï¿½");
 					break;
 				case 2:
-					risklist.get(i).setRiskPossibilityStr("ÖÐ");
+					risklist.get(i).setRiskPossibilityStr("ï¿½ï¿½");
 					break;
 				case 3:
-					risklist.get(i).setRiskPossibilityStr("¸ß");
+					risklist.get(i).setRiskPossibilityStr("ï¿½ï¿½");
 					break;
 				default:
 					System.out.println("riskPossibility false");
@@ -80,13 +81,13 @@ public class ProjectAction extends ActionSupport{
 			
 			switch(risklist.get(i).getRiskEfficiency()){
 				case 1:
-					risklist.get(i).setRiskEfficiencyStr("µÍ");
+					risklist.get(i).setRiskEfficiencyStr("ï¿½ï¿½");
 					break;
 				case 2:
-					risklist.get(i).setRiskEfficiencyStr("ÖÐ");
+					risklist.get(i).setRiskEfficiencyStr("ï¿½ï¿½");
 					break;
 				case 3:
-					risklist.get(i).setRiskEfficiencyStr("¸ß");
+					risklist.get(i).setRiskEfficiencyStr("ï¿½ï¿½");
 					break;
 				default:
 					System.out.println("riskEfficiencyStr false");
