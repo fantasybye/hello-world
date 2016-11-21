@@ -1,8 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/main/java/servlet=gbk
-encoding//src/main/java/servlet/ProjectAction.java=gbk
-encoding//src/main/java/servlet/RiskAction.java=gbk
 encoding//src/main/webapp/CSS/reset.css=UTF-8
 encoding//src/main/webapp/import.jsp=UTF-8
 encoding//src/main/webapp/showAllRisks.jsp=UTF-8
-encoding/<project>=gbk
+encoding/<project>=UTF-8
