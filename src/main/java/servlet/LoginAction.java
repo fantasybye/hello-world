@@ -83,13 +83,13 @@ public class LoginAction extends ActionSupport{
 			    session.put("username", username);			  
 				return "success";
 			case -1:
-				message="ÓÃ»§Ãû²»´æÔÚ";
+				message="ç”¨æˆ·åä¸å­˜åœ¨";
 				return "not found";
 			case -2:
-				message="ÃÜÂë´íÎó";
+				message="å¯†ç é”™è¯¯";
 				return "wrong";
 			default:
-				message="µÇÂ¼Ê§°Ü";
+				message="ç™»å½•å¤±è´¥";
 				return "fail";
 		}
 	} 

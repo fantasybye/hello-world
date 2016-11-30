@@ -79,7 +79,7 @@ public class UserAddAction extends ActionSupport{
 	public String addUser(){
 		userLogic u=new userLogic();
 		if(!rpassword.equals(crpassword)){
-			message="ÃÜÂë²»ÏàÍ¬";
+			message="ä¸¤æ¬¡å¯†ç ä¸ä¸€è‡´";
 			return "fail";
 		}
 		int result=u.addUser(rusername, rpassword, true);
@@ -91,13 +91,13 @@ public class UserAddAction extends ActionSupport{
 			    session.put("username", rusername);			  
 				return "success";
 			case -1:
-				message="ÓÃ»§ÃûÒÑ´æÔÚ";
+				message="ç”¨æˆ·åå·²å­˜åœ¨";
 				return "already exist";
 			case -2:
-				message="ÃÜÂëÉÙÓÚ6Î»";
+				message="å¯†ç è¿‡çŸ­";
 				return "too short";
 			default:
-				message="×¢²áÊ§°Ü";
+				message="æ³¨å†Œå¤±è´¥";
 				return "fail";
 		}
 	}
